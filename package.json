@@ -1,0 +1,52 @@
+{
+  "name": "front-end-starter",
+  "version": "0.1.0",
+  "description": "a starter using TypeScript & Sass, Laravel Mix & Webpack, Jest & GitHub Actions",
+  "main": "./public/entry.js",
+  "scripts": {
+    "start": "npm run watch",
+    "build": " npm run lint:fix && cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run lint:fix && cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js --watch",
+    "check": "npm run lint:fix && npm run build && npm run test",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "doc": "typedoc --out ./docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blyndusk/front-end-starter.git"
+  },
+  "author": {
+    "name": "Alexandre Delaloy",
+    "email": "alexandredlaloydev@gmail.com",
+    "url": "https://a-dll.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blyndusk/front-end-starter/issues"
+  },
+  "homepage": "https://github.com/blyndusk/front-end-starter#readme",
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "cross-env": "^6.0.3",
+    "jest": "^24.9.0",
+    "laravel-mix": "^5.0.0",
+    "resolve-url-loader": "^3.1.0",
+    "sass": "^1.23.7",
+    "sass-loader": "^8.0.0",
+    "ts-jest": "^24.2.0",
+    "ts-loader": "^6.2.1",
+    "tslint": "^5.20.1",
+    "typedoc": "^0.15.2",
+    "typescript": "^3.7.2",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "@types/node": "^12.12.8",
+    "dotenv": "^8.2.0"
+  }
+}

@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "outDir": "public",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "target": "es5",
+        "jsx": "react",
+        "allowJs": true
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
