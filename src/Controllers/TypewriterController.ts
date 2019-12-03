@@ -30,8 +30,8 @@ export default class TypewriterController {
                     } else {
                         console.log('🚫 - word skipped');
                         this.removeFirstWord();
-                        const count = this.model.getbadWordsCount() + 1;
-                        this.model.setbadWordsCount(count);
+                        const count = this.model.getBadWordsCount() + 1;
+                        this.model.setBadWordsCount(count);
                     }
                     isWordFinished = false;
                     i = 0;
