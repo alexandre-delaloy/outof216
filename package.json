@@ -29,6 +29,8 @@
   },
   "homepage": "https://github.com/blyndusk/front-end-starter#readme",
   "devDependencies": {
+    "@types/node": "^12.12.8",
+    "@types/faker": "^4.1.8",
     "@types/jest": "^24.0.23",
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^2.2.2",
@@ -46,7 +48,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "@types/node": "^12.12.8",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "faker": "^4.1.0"
   }
 }
