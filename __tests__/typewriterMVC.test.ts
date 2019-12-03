@@ -9,8 +9,7 @@ const WORDS = [
 
 const ultraJoin = (array: string[][]): string => {
     return array.join().replace(/,/g, '');
-}
-
+};
 
 const twModel = new TypewriterModel(WORDS);
 const twView = new TypewriterView(document.querySelector('body'));
@@ -23,15 +22,15 @@ test('model', () => {
     twModel.setWords([
         [ 'b', 'a', 'r' ],
         [ 'f', 'o', 'o' ],
-    ])
+    ]);
 
     expect(ultraJoin(twModel.getWords())).toMatch(/barfoo/g);
 });
 
 test('view', () => {
     twController.updateView();
-})
+});
 
 test('controller', () => {
     twController.handleKeys();
-})
+});
