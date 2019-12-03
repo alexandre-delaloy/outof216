@@ -1,21 +1,9 @@
 export default class TypewriterController {
     private model: any;
     private view: any;
-    private letterIndex: number;
-    private isWordCompleted: boolean;
-    private isLetterRight: boolean;
-    private executed: boolean;
-    private executed2: boolean;
-    private hasToBeDeleted: boolean;
     constructor(model: any, view: any) {
         this.model = model;
         this.view = view;
-        this.letterIndex = 0;
-        this.isWordCompleted = false;
-        this.isLetterRight = false;
-        this.executed = false;
-        this.executed2 = false;
-        this.hasToBeDeleted = false;
     }
     public updateView() {
         return this.view.displayWords(this.model.words);
@@ -23,13 +11,13 @@ export default class TypewriterController {
     public stylizeLetter(type: string, i: number) {
         switch (type) {
             case 'right':
-                console.warn('💚 - right letter');
+                console.log('✅ - right letter');
                 return this.model.getWords()[0][i] = `<i style="color:lightgreen;">${this.model.getWords()[0][i]}</i>`;
             case 'wrong':
-                console.warn('❤️ - wrong letter');
+                console.log('❌ - wrong letter');
                 return this.model.getWords()[0][i] = `<i style="color:red;">${this.model.getWords()[0][i]}</i>`;
             case 'correct':
-                console.warn('💛 - corrected letter');
+                console.log('🔶 - corrected letter');
                 return this.model.getWords()[0][i] = this.model.getWords()[0][i]
                     .match(/>[a-z]/g)
                     .join()
@@ -38,14 +26,14 @@ export default class TypewriterController {
         return this.model.setWords(this.model.getWords());
     }
     public wordValidation() {
-        console.warn('💜 - word validated');
+        console.log('🔵 - word validated');
         this.model.getWords().shift();
         this.model.setWords(this.model.getWords());
     }
     public letterCorrection(i: number) {
         this.stylizeLetter('correct', i);
     }
-    public handleType() {
+    public handleKeys() {
         let isWordFinished: boolean = false;
         let hasToBeCorrected: boolean = false;
         let i: number = 0;
@@ -54,7 +42,7 @@ export default class TypewriterController {
                 this.stylizeLetter('right', i);
                 i++;
                 if (i === this.model.getWords()[0].length) {
-                    console.warn('💙 - finished');
+                    console.log('🔷 - finished');
                     isWordFinished = true;
                 }
             } else {

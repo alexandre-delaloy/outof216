@@ -19,4 +19,4 @@ const twView = new TypewriterView(document.querySelector('.typewriter'));
 const twController = new TypewriterController(twModel, twView);
 
 twController.updateView();
-twController.handleType();
+twController.handleKeys();
