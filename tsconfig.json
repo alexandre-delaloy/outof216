@@ -10,7 +10,8 @@
         "allowJs": true
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts",
+        "__tests/**/*.test.ts"
     ],
     "exclude": [
         "node_modules"
