@@ -3,15 +3,18 @@ export default class TypewriterView {
     constructor(entryNode: HTMLElement) {
         this.entryNode = entryNode;
     }
-    // private displayLetters(letters: string[]) {
-
-    // }
-    private displayWords(words: string[][]) {
+    private displayWords(words: string[][], goodWordsCount: number, badWordsCount: number) {
         return this.entryNode.innerHTML = `
-            <div>${words.map((word: string[]) => {
-                return `<span>${word.join('')}</span>`;
-            }).join('&nbsp;')}
-             </div>
+            <div>
+                ${words.map((word: string[]) => {
+                    return `<span>${word.join('')}</span>`;
+                }).join('&nbsp;')}
+            </div>
+            <span>
+                <i style="color:lightgreen">${goodWordsCount}</i>
+                &nbsp;/&nbsp;
+                <i style="color:red">${badWordsCount}</i>
+            </span>
         `;
     }
 }

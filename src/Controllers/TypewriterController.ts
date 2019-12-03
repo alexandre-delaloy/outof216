@@ -6,7 +6,7 @@ export default class TypewriterController {
         this.view = view;
     }
     public updateView() {
-        return this.view.displayWords(this.model.words);
+        return this.view.displayWords(this.model.words, this.model.getGoodWordsCount(), this.model.getBadWordsCount());
     }
     public handleKeys() {
         let isWordFinished: boolean = false;
