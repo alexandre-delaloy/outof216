@@ -23,10 +23,18 @@ export default class TypewriterController {
             } else {
                 if (e.code === 'Space') {
                     if (isWordFinished) {
-                        isWordFinished = false;
-                        i = 0;
-                        this.wordValidation();
+                        console.log('🔵 - word validated');
+                        this.removeFirstWord();
+                        const count = this.model.getGoodWordsCount() + 1;
+                        this.model.setGoodWordsCount(count);
+                    } else {
+                        console.log('🚫 - word skipped');
+                        this.removeFirstWord();
+                        const count = this.model.getbadWordsCount() + 1;
+                        this.model.setbadWordsCount(count);
                     }
+                    isWordFinished = false;
+                    i = 0;
                 } else if (e.code === 'Backspace') {
                     if (!isWordFinished && hasToBeCorrected) {
                         this.letterCorrection(i);
@@ -59,8 +67,7 @@ export default class TypewriterController {
         }
         return this.model.setWords(this.model.getWords());
     }
-    private wordValidation() {
-        console.log('🔵 - word validated');
+    private removeFirstWord() {
         this.model.getWords().shift();
         this.model.setWords(this.model.getWords());
     }
