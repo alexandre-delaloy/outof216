@@ -1,23 +1,37 @@
 import UserModel from '../Models/UserModel';
 import UserView from '../Views/UserView';
 import UserController from '../Controllers/UserController';
+
+import ClockModel from '../Models/ClockModel';
+import ClockView from '../Views/ClockView';
+import ClockController from '../Controllers/ClockController';
+
 import ph from '../placeholders';
 
 export default class TypewriterController {
     private model: any;
     private view: any;
+    private seconds: number;
     private userM: any;
     private userV: any;
     private userC: any;
+    private clockM: any;
+    private clockV: any;
+    private clockC: any;
     constructor(model: any, view: any) {
         this.model = model;
         this.view = view;
+        this.seconds = 60;
         this.userM = new UserModel(ph.user, ph.stats, []);
         this.userV = new UserView(document.querySelector('#user'));
         this.userC = new UserController(this.userM, this.userV);
+        this.clockM = new ClockModel(this.seconds);
+        this.clockV = new ClockView(document.querySelector('#timer'));
+        this.clockC = new ClockController(this.clockM, this.clockV);
     }
     public updateView() {
         this.userC.updateView();
+        this.clockC.updateView();
         return this.view.display(
             this.model.getWords(),
             this.model.getGoodWordsCount(),
@@ -27,33 +41,39 @@ export default class TypewriterController {
     public handleKeys() {
         let isWordFinished: boolean = false;
         let hasToBeCorrected: boolean = false;
+        let isStarted = false;
         let i: number = 0;
         return window.addEventListener('keydown', (e) => {
-            const stats = this.userM.getStats();
-
+            if (this.seconds <= 1) {
+                setTimeout(() => {
+                    return;
+                }, 1000);
+            }
+            const USER_STATS = this.userM.getStats();
+            if (!isStarted) {
+                this.setTimer();
+                isStarted = true;
+            }
             if (e.key === this.model.getWords()[0][i]) {
                 this.stylizeLetter('right', i);
                 i++;
                 if (i === this.model.getWords()[0].length) {
-                    console.log('🔷 - finished');
                     isWordFinished = true;
                 }
             } else {
                 if (e.code === 'Space') {
-                    stats.words.count++;
-                    stats.words.ratio = stats.words.success / stats.words.count;
+                    USER_STATS.words.count++;
                     if (isWordFinished) {
-                        console.log('🔵 - word validated');
                         this.removeFirstWord();
-                        stats.words.success++;
-                        stats.WPM++;
-                        this.userM.setStats(stats);
+                        USER_STATS.words.success++;
+                        USER_STATS.WPM++;
+                        this.userM.setStats(USER_STATS);
                     } else {
-                        console.log('🚫 - word skipped');
                         this.removeFirstWord();
-                        stats.words.fail++;
-                        this.userM.setStats(stats);
+                        USER_STATS.words.fail++;
+                        this.userM.setStats(USER_STATS);
                     }
+                    USER_STATS.words.ratio = USER_STATS.words.success / USER_STATS.words.count;
                     isWordFinished = false;
                     i = 0;
                 } else if (e.code === 'Backspace') {
@@ -74,13 +94,10 @@ export default class TypewriterController {
     private stylizeLetter(type: string, i: number) {
         switch (type) {
             case 'right':
-                console.log('✅ - right letter');
                 return this.model.getWords()[0][i] = `<i style="color:#23b923;">${this.model.getWords()[0][i]}</i>`;
             case 'wrong':
-                console.log('❌ - wrong letter');
                 return this.model.getWords()[0][i] = `<i style="color:#b92323;">${this.model.getWords()[0][i]}</i>`;
             case 'correct':
-                console.log('🔶 - corrected letter');
                 return this.model.getWords()[0][i] = this.model.getWords()[0][i]
                     .match(/>[a-z]/g)
                     .join()
@@ -94,5 +111,19 @@ export default class TypewriterController {
     }
     private letterCorrection(i: number) {
         this.stylizeLetter('correct', i);
+    }
+    private setTimer() {
+        const timer = setInterval(() => {
+            this.seconds--;
+            this.clockM.setSeconds(this.seconds);
+            this.clockC.updateView();
+            if (this.seconds <= 0) {
+                clearInterval(timer);
+                return this.userM.getProgression().push({
+                    user: this.userM.getUser(),
+                    stats: this.userM.getStats(),
+                });
+            }
+        }, 1000);
     }
 }
