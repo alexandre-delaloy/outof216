@@ -4,7 +4,7 @@ export default class UserModel {
     private user: IUser;
     private stats: IStats;
     private progression: any[];
-    constructor(user: IUser, stats: IStats, progression: any[]) {
+    constructor(user?: IUser, stats?: IStats, progression?: any[]) {
         this.user = user;
         this.stats = stats;
         this.progression = progression;

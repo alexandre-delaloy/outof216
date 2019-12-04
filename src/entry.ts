@@ -1,8 +1,8 @@
 import faker from 'faker';
 
-import TypewriterController from './Controllers/TypewriterController';
 import TypewriterModel from './Models/TypewriterModel';
 import TypewriterView from './Views/TypewriterView';
+import TypewriterController from './Controllers/TypewriterController';
 
 const RANDOM_WORDS: string[] = [];
 
@@ -14,9 +14,9 @@ const RANDOM_WORDS_SPLITTED: string[][] = RANDOM_WORDS.map((word: string) => {
     return word.split('');
 });
 
-const twModel = new TypewriterModel(RANDOM_WORDS_SPLITTED);
-const twView = new TypewriterView(document.querySelector('.typewriter'));
-const twController = new TypewriterController(twModel, twView);
+const twM = new TypewriterModel(RANDOM_WORDS_SPLITTED);
+const twV = new TypewriterView(document.querySelector('#tw'));
+const twC = new TypewriterController(twM, twV);
 
-twController.updateView();
-twController.handleKeys();
+twC.updateView();
+twC.handleKeys();

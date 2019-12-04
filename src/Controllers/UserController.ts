@@ -12,4 +12,7 @@ export default class UserController {
             this.model.getProgression(),
         );
     }
+    public getRatio() {
+        return this.model.stats.words.success / this.model.stats.words.count;
+    }
 }

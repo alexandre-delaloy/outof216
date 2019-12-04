@@ -1,11 +1,23 @@
+import UserModel from '../Models/UserModel';
+import UserView from '../Views/UserView';
+import UserController from '../Controllers/UserController';
+import ph from '../placeholders';
+
 export default class TypewriterController {
     private model: any;
     private view: any;
+    private userM: any;
+    private userV: any;
+    private userC: any;
     constructor(model: any, view: any) {
         this.model = model;
         this.view = view;
+        this.userM = new UserModel(ph.user, ph.stats, []);
+        this.userV = new UserView(document.querySelector('#user'));
+        this.userC = new UserController(this.userM, this.userV);
     }
     public updateView() {
+        this.userC.updateView();
         return this.view.display(
             this.model.getWords(),
             this.model.getGoodWordsCount(),
@@ -17,25 +29,31 @@ export default class TypewriterController {
         let hasToBeCorrected: boolean = false;
         let i: number = 0;
         return window.addEventListener('keydown', (e) => {
+            const stats = this.userM.getStats();
+
             if (e.key === this.model.getWords()[0][i]) {
                 this.stylizeLetter('right', i);
                 i++;
                 if (i === this.model.getWords()[0].length) {
                     console.log('🔷 - finished');
+                    stats.WPM++;
+                    this.userM.setStats(stats);
                     isWordFinished = true;
                 }
             } else {
                 if (e.code === 'Space') {
+                    stats.words.count++;
+                    stats.words.ratio = stats.words.success / stats.words.count;
                     if (isWordFinished) {
                         console.log('🔵 - word validated');
                         this.removeFirstWord();
-                        const count = this.model.getGoodWordsCount() + 1;
-                        this.model.setGoodWordsCount(count);
+                        stats.words.success++;
+                        this.userM.setStats(stats);
                     } else {
                         console.log('🚫 - word skipped');
                         this.removeFirstWord();
-                        const count = this.model.getBadWordsCount() + 1;
-                        this.model.setBadWordsCount(count);
+                        stats.words.fail++;
+                        this.userM.setStats(stats);
                     }
                     isWordFinished = false;
                     i = 0;
