@@ -12,6 +12,7 @@ export default class TypewriterController {
     private model: any;
     private view: any;
     private seconds: number;
+    private isWordFinished: boolean;
     private userM: any;
     private userV: any;
     private userC: any;
@@ -22,6 +23,7 @@ export default class TypewriterController {
         this.model = model;
         this.view = view;
         this.seconds = 60;
+        this.isWordFinished = false;
         this.userM = new UserModel(ph.user, ph.stats, []);
         this.userV = new UserView(document.querySelector('#user'));
         this.userC = new UserController(this.userM, this.userV);
@@ -34,12 +36,10 @@ export default class TypewriterController {
         this.clockC.updateView();
         return this.view.display(
             this.model.getWords(),
-            this.model.getGoodWordsCount(),
-            this.model.getBadWordsCount(),
+            this.isWordFinished,
         );
     }
     public handleKeys() {
-        let isWordFinished: boolean = false;
         let hasToBeCorrected: boolean = false;
         let isStarted = false;
         let i: number = 0;
@@ -58,12 +58,12 @@ export default class TypewriterController {
                 this.stylizeLetter('right', i);
                 i++;
                 if (i === this.model.getWords()[0].length) {
-                    isWordFinished = true;
+                    this.isWordFinished = true;
                 }
             } else {
                 if (e.code === 'Space') {
                     USER_STATS.words.count++;
-                    if (isWordFinished) {
+                    if (this.isWordFinished) {
                         this.removeFirstWord();
                         USER_STATS.words.success++;
                         USER_STATS.WPM++;
@@ -74,15 +74,15 @@ export default class TypewriterController {
                         this.userM.setStats(USER_STATS);
                     }
                     USER_STATS.words.ratio = USER_STATS.words.success / USER_STATS.words.count;
-                    isWordFinished = false;
+                    this.isWordFinished = false;
                     i = 0;
                 } else if (e.code === 'Backspace') {
-                    if (!isWordFinished && hasToBeCorrected) {
+                    if (!this.isWordFinished && hasToBeCorrected) {
                         this.letterCorrection(i);
                         hasToBeCorrected = false;
                     }
                 } else {
-                    if (!isWordFinished) {
+                    if (!this.isWordFinished) {
                         this.stylizeLetter('wrong', i);
                         hasToBeCorrected = true;
                     }
