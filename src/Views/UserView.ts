@@ -18,9 +18,9 @@ export default class UserView {
                     <span>${stats.LPS}</span>
                 </li>
                 <li>
-                    <i style="color:lightgreen">${stats.words.success}</i>
+                    <i style="color:#23b923">${stats.words.success}</i>
                     &nbsp;/&nbsp;
-                    <i style="color:red">${stats.words.fail}</i>
+                    <i style="color:#b92323">${stats.words.fail}</i>
                     ( ${Math.floor(stats.words.ratio * 100)}% )
                 </li>
             </ul>

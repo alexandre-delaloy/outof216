@@ -5,7 +5,7 @@ export default class TypewriterView {
     }
     private display(words: string[][], goodWordsCount: number, badWordsCount: number) {
         return this.entryNode.innerHTML = `
-            ${words.map((word: string[]) => {
+            <strong>>&nbsp;</strong>${words.map((word: string[]) => {
                 return `<span>${word.join('')}</span>`;
             }).join('&nbsp;')}
         `;

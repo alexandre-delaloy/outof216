@@ -36,8 +36,6 @@ export default class TypewriterController {
                 i++;
                 if (i === this.model.getWords()[0].length) {
                     console.log('🔷 - finished');
-                    stats.WPM++;
-                    this.userM.setStats(stats);
                     isWordFinished = true;
                 }
             } else {
@@ -48,6 +46,7 @@ export default class TypewriterController {
                         console.log('🔵 - word validated');
                         this.removeFirstWord();
                         stats.words.success++;
+                        stats.WPM++;
                         this.userM.setStats(stats);
                     } else {
                         console.log('🚫 - word skipped');
@@ -76,10 +75,10 @@ export default class TypewriterController {
         switch (type) {
             case 'right':
                 console.log('✅ - right letter');
-                return this.model.getWords()[0][i] = `<i style="color:lightgreen;">${this.model.getWords()[0][i]}</i>`;
+                return this.model.getWords()[0][i] = `<i style="color:#23b923;">${this.model.getWords()[0][i]}</i>`;
             case 'wrong':
                 console.log('❌ - wrong letter');
-                return this.model.getWords()[0][i] = `<i style="color:red;">${this.model.getWords()[0][i]}</i>`;
+                return this.model.getWords()[0][i] = `<i style="color:#b92323;">${this.model.getWords()[0][i]}</i>`;
             case 'correct':
                 console.log('🔶 - corrected letter');
                 return this.model.getWords()[0][i] = this.model.getWords()[0][i]
