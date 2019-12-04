@@ -5,17 +5,16 @@ export default class UserView {
     constructor(entryNode: HTMLElement) {
         this.entryNode = entryNode;
     }
-    private display(user: IUser, stats: IStats, progression: any[]) {
+    private display(
+        user: IUser,
+        stats: IStats,
+        progression: any[],
+    ) {
         return this.entryNode.innerHTML = `
-            <h3>${user.pseudo} ( ${user.id} )</h3>
             <ul>
                 <li>
-                    WPM :
+                    WPM:
                     <span>${stats.WPM}</span>
-                </li>
-                <li>
-                    LPS :
-                    <span>${stats.LPS}</span>
                 </li>
                 <li>
                     <i style="color:#23b923">${stats.words.success}</i>
