@@ -6,7 +6,11 @@ export default class TypewriterController {
         this.view = view;
     }
     public updateView() {
-        return this.view.displayWords(this.model.words, this.model.getGoodWordsCount(), this.model.getBadWordsCount());
+        return this.view.display(
+            this.model.getWords(),
+            this.model.getGoodWordsCount(),
+            this.model.getBadWordsCount(),
+        );
     }
     public handleKeys() {
         let isWordFinished: boolean = false;

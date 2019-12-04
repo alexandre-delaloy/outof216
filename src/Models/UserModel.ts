@@ -1,36 +1,30 @@
+import { IUser, IStats } from '../types';
+
 export default class UserModel {
-    private WPM: number;
-    private LPS: number;
-    private ratio: number;
+    private user: IUser;
+    private stats: IStats;
     private progression: any[];
-    constructor(WPM: number, LPS: number, ratio: number, progression: any[]) {
-        this.WPM = WPM;
-        this.LPS = LPS;
-        this.ratio = ratio;
+    constructor(user: IUser, stats: IStats, progression: any[]) {
+        this.user = user;
+        this.stats = stats;
         this.progression = progression;
     }
-    public getWPM() {
-        return this.WPM;
+    public getUser() {
+        return this.user;
     }
-    public setWPM(newWPM: number) {
-        this.WPM = newWPM;
+    public setUser(newUser: IUser) {
+        this.user = newUser;
     }
-    public getLPS() {
-        return this.LPS;
+    public getStats() {
+        return this.stats;
     }
-    public setLPS(newLPS: number) {
-        this.LPS = newLPS;
-    }
-    public getRatio() {
-        return this.ratio;
-    }
-    public setRatio(newRatio: number) {
-        this.ratio = newRatio;
+    public setStats(newStats: IStats) {
+        this.stats = newStats;
     }
     public getProgression() {
         return this.progression;
     }
-    public setprogression(newProgression: any[]) {
+    public setProgression(newProgression: any[]) {
         this.progression = newProgression;
     }
 }
