@@ -5,46 +5,77 @@ body {
     #app {
         max-width: 666px;
         margin: 0 auto;
-    }
-    h1 {
-        color: #20c7ab;
-        span {
-            color: #ff9d00;
+        h1 {
+            color: #20c7ab;
+            span {
+                color: #ff9d00;
+            }
         }
-    }
-    h2 {
-        color: #83ffea;
-    }
-    h3 {
-        margin-top: 50px;
-    }
-    strong {
-        color: #ff9d00;
-        font-size: 18px;
-    }
-    i {
-        font-style: normal;
-    }
-    #tw {
-        background: #222;
-        color: #f6f6f6;
-        border-radius: 5px;
-        padding: 20px;
-        margin: 20px auto 50px;
-        font-size: 20px;
-        overflow: hidden;
-        position: relative;
-        &:after {
-            content: '';
-            width: 25px;
-            height: 100%;
-            background: linear-gradient(90deg, transparent 0%, #222 50%);
-            position: absolute;
-            top: 0;
-            right: 0;
+        h2 {
+            color: #83ffea;
         }
+        
         strong {
             color: #ff9d00;
+            font-size: 18px;
+        }
+        i {
+            font-style: normal;
+        }
+        #tw {
+            background: #222;
+            color: #f6f6f6;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px auto 50px;
+            font-size: 20px;
+            overflow: hidden;
+            position: relative;
+            &:after {
+                content: '';
+                width: 25px;
+                height: 100%;
+                background: linear-gradient(90deg, transparent 0%, #222 50%);
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+            strong {
+                color: #ff9d00;
+            }
+        }
+        #box {
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            h3 { 
+                margin: 0;
+            }   
+            #timer {
+                display: flex;
+                padding-inline-start: 0;
+                margin: 0 10px;
+                font-size: 14px;
+                font-weight: bold;
+                color: #83ffea;
+                .second {
+                    width: 5px;
+                    height: 20px;
+                    background: #83ffea;
+                    margin: 1px;
+                    list-style-type: none;
+                }
+            }
+            #clock {
+                padding-inline-start: 0;
+                margin: 0;
+                li {
+                    margin: 0 10px;
+                    font-size: 20px;
+                    color: #83ffea;
+                    list-style-type: none;
+                }
+            }
         }
     }
 }
