@@ -13,6 +13,7 @@ export default class TypewriterController {
     private view: any;
     private seconds: number;
     private isWordFinished: boolean;
+    private hasToBeCorrected: boolean;
     private userM: any;
     private userV: any;
     private userC: any;
@@ -24,6 +25,7 @@ export default class TypewriterController {
         this.view = view;
         this.seconds = 60;
         this.isWordFinished = false;
+        this.hasToBeCorrected = false;
         this.userM = new UserModel(ph.user, ph.stats, []);
         this.userV = new UserView(document.querySelector('#user'));
         this.userC = new UserController(this.userM, this.userV);
@@ -37,10 +39,10 @@ export default class TypewriterController {
         return this.view.display(
             this.model.getWords(),
             this.isWordFinished,
+            this.hasToBeCorrected,
         );
     }
     public handleKeys() {
-        let hasToBeCorrected: boolean = false;
         let isStarted = false;
         let i: number = 0;
         return window.addEventListener('keydown', (e) => {
@@ -77,14 +79,14 @@ export default class TypewriterController {
                     this.isWordFinished = false;
                     i = 0;
                 } else if (e.code === 'Backspace') {
-                    if (!this.isWordFinished && hasToBeCorrected) {
+                    if (!this.isWordFinished && this.hasToBeCorrected) {
                         this.letterCorrection(i);
-                        hasToBeCorrected = false;
+                        this.hasToBeCorrected = false;
                     }
                 } else {
                     if (!this.isWordFinished) {
                         this.stylizeLetter('wrong', i);
-                        hasToBeCorrected = true;
+                        this.hasToBeCorrected = true;
                     }
                 }
             }
