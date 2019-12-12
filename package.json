@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "dotenv": "^8.2.0",
-    "faker": "^4.1.0"
+    "faker": "^4.1.0",
+    "firebase": "^7.5.2"
   }
 }
