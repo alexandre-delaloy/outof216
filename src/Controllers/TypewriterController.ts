@@ -8,6 +8,8 @@ import ClockController from '../Controllers/ClockController';
 
 import ph from '../placeholders';
 
+import { writeUserData } from '../db';
+
 export default class TypewriterController {
     private model: any;
     private view: any;
@@ -23,10 +25,10 @@ export default class TypewriterController {
     constructor(model: any, view: any) {
         this.model = model;
         this.view = view;
-        this.seconds = 60;
+        this.seconds = 10;
         this.isWordFinished = false;
         this.hasToBeCorrected = false;
-        this.userM = new UserModel(ph.user, ph.stats, []);
+        this.userM = new UserModel(ph.user, []);
         this.userV = new UserView(document.querySelector('#user'));
         this.userC = new UserController(this.userM, this.userV);
         this.clockM = new ClockModel(this.seconds);
@@ -51,7 +53,7 @@ export default class TypewriterController {
                     return;
                 }, 1000);
             }
-            const USER_STATS = this.userM.getStats();
+            const USER = this.userM.getUser();
             if (!isStarted) {
                 this.setTimer();
                 isStarted = true;
@@ -64,18 +66,18 @@ export default class TypewriterController {
                 }
             } else {
                 if (e.code === 'Space') {
-                    USER_STATS.words.count++;
+                    USER.words.count++;
                     if (this.isWordFinished) {
                         this.removeFirstWord();
-                        USER_STATS.words.success++;
-                        USER_STATS.WPM++;
-                        this.userM.setStats(USER_STATS);
+                        USER.words.success++;
+                        USER.WPM++;
+                        this.userM.setUser(USER);
                     } else {
                         this.removeFirstWord();
-                        USER_STATS.words.fail++;
-                        this.userM.setStats(USER_STATS);
+                        USER.words.fail++;
+                        this.userM.setUser(USER);
                     }
-                    USER_STATS.words.ratio = USER_STATS.words.success / USER_STATS.words.count;
+                    USER.words.ratio = USER.words.success / USER.words.count;
                     this.isWordFinished = false;
                     i = 0;
                 } else if (e.code === 'Backspace') {
@@ -121,9 +123,9 @@ export default class TypewriterController {
             this.clockC.updateView();
             if (this.seconds <= 0) {
                 clearInterval(timer);
+                writeUserData(this.userM.getUser());
                 return this.userM.getProgression().push({
                     user: this.userM.getUser(),
-                    stats: this.userM.getStats(),
                 });
             }
         }, 1000);

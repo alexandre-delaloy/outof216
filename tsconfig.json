@@ -5,6 +5,7 @@
         "noImplicitAny": true,
         "module": "commonjs",
         "esModuleInterop": true,
+        "resolveJsonModule": true,
         "target": "es5",
         "jsx": "preserve",
         "allowJs": true

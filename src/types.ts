@@ -1,9 +1,5 @@
 export interface IUser {
-    pseudo: string;
-    id: string;
-}
-
-export interface IStats {
+    name: string;
     WPM: number;
     LPS: number;
     words: {

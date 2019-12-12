@@ -1,4 +1,4 @@
-import { IUser, IStats } from '../types';
+import { IUser } from '../types';
 
 export default class UserView {
     private entryNode: HTMLElement;
@@ -7,20 +7,19 @@ export default class UserView {
     }
     private display(
         user: IUser,
-        stats: IStats,
         progression: any[],
     ) {
         return this.entryNode.innerHTML = `
             <ul>
                 <li>
                     WPM:
-                    <span>${stats.WPM}</span>
+                    <span>${user.WPM}</span>
                 </li>
                 <li>
-                    <i style="color:#23b923">${stats.words.success}</i>
+                    <i style="color:#23b923">${user.words.success}</i>
                     &nbsp;/&nbsp;
-                    <i style="color:#b92323">${stats.words.fail}</i>
-                    ( ${Math.floor(stats.words.ratio * 100)}% )
+                    <i style="color:#b92323">${user.words.fail}</i>
+                    ( ${Math.floor(user.words.ratio * 100)}% )
                 </li>
             </ul>
         `;

@@ -1,9 +1,6 @@
 const ph = {
     user: {
-        pseudo: 'John Doe',
-        id: '1nxsF2Hp',
-    },
-    stats: {
+        name: 'John Doe',
         WPM: 0,
         LPS: 0,
         words: {
