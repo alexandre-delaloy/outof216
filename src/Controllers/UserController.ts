@@ -8,7 +8,6 @@ export default class UserController {
     public updateView() {
         return this.view.display(
             this.model.getUser(),
-            this.model.getStats(),
             this.model.getProgression(),
         );
     }
