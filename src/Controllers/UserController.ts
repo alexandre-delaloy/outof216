@@ -8,6 +8,7 @@ export default class UserController {
     public updateView() {
         return this.view.display(
             this.model.getUser(),
+            this.model.getIsPopin(),
             this.model.getProgression(),
         );
     }
