@@ -7,9 +7,17 @@ export default class PodiumView {
     }
     private display(users: IUser[]) {
         this.entryNode.innerHTML = `
-            ${users.map((user: IUser) => {
-                return `<li>${user.name} - ${user.WPM}</li>`;
-            })}
+            <strong>Podium: </strong>
+            ${users.map((user: IUser, i: number) => {
+                while (i <= 5) {
+                    return `<li>
+                        ${i + 1}.
+                        ${user.name} - WPM:
+                        ${user.WPM} - Acc:
+                        ${Math.floor(user.words.ratio * 100)}%
+                    </li>`;
+                }
+            }).join('')}
         `;
     }
 }

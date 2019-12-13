@@ -1,7 +1,6 @@
 import * as firebase from 'firebase';
 import 'array.prototype.move';
 
-
 import PodiumModel from './Models/PodiumModel';
 import PodiumView from './Views/PodiumView';
 import PodiumController from './Controllers/PodiumController';
@@ -47,12 +46,6 @@ export const readData = () => {
     const pdM = new PodiumModel(PARSED_USERS);
     const pdV = new PodiumView(document.querySelector('#podium'));
     const pdC = new PodiumController(pdM, pdV);
-    // tslint:disable-next-line: no-console
-    console.log(pdM.getUsers());
     pdC.updateView();
-  }, (errorObject: any) =>  {
-    // tslint:disable-next-line: no-console
-    console.log('The read failed: ' + errorObject.code);
   });
-  return PARSED_USERS;
 };

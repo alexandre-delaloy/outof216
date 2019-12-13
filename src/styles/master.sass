@@ -82,6 +82,7 @@ body
                 border-radius: 5px
                 h3 
                     font-size: 30px
+                    color: #ff9d00
             &.active
                 background: rgba(0, 0, 0, 0.666)
                 width: 100vw
@@ -92,7 +93,7 @@ body
                 position: fixed
                 top: 0
                 left: 0
-                backdrop-filter: blur(2px)
+                backdrop-filter: blur(6.66px)
                 opacity: 1
                 form, label
                     display: flex
@@ -111,7 +112,8 @@ body
                     &:hover 
                         color: #222
                         background: #20c7ab
-                .overlay
+                a
+                    color: #20c7ab
         #podium
             position: absolute
             top: 10px
@@ -119,5 +121,8 @@ body
             background: #222
             padding: 10px
             border-radius: 5px
+            strong
+                margin-bottom: 20px
+                display: block
             li 
                 list-style-type: none
