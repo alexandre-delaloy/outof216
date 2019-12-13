@@ -1,0 +1,114 @@
+@keyframes gradient
+    0%, 100%
+        color: #20c7ab
+    50%
+        color: #ff9d00
+
+body
+    background: #111
+    color: #777
+    font-family: 'Solway', serif
+    #app
+        max-width: 666px
+        margin: 0 auto
+        position: relative
+        h1
+            color: #20c7ab
+            font-size: 40px
+            margin: 0
+            span
+                animation: gradient 1s infinite
+        h2
+            color: #83ffea
+            font-size: 20px
+            font-style: italic
+        
+        strong
+            color: #ff9d00
+            font-size: 20px
+        i
+            font-style: normal
+        #tw
+            background: #222
+            color: #f6f6f6
+            border-radius: 5px
+            padding: 20px
+            margin: 20px auto
+            font-size: 20px
+            overflow: hidden
+            position: relative
+            &:after
+                content: ''
+                width: 25px
+                height: 100%
+                background: linear-gradient(90deg, transparent 0%, #222 50%)
+                position: absolute
+                top: 0
+                right: 0
+
+        #box
+            margin-top: 50px
+            display: flex
+            align-items: center
+            h3 
+                margin: 0   
+            #timer
+                display: flex
+                padding-inline-start: 0
+                margin: 0 10px
+                font-size: 14px
+                font-weight: bold
+                color: #83ffea
+                .second
+                    width: 5px
+                    height: 20px
+                    background: #83ffea
+                    margin: 1px
+                    list-style-type: none
+            #clock
+                padding-inline-start: 0
+                margin: 0
+                li
+                    margin: 0 10px
+                    font-size: 20px
+                    color: #83ffea
+                    list-style-type: none
+        #popin
+            opacity: 0
+            transition: opacity 0.2s ease
+            .content
+                background: #222
+                padding: 50px
+                border-radius: 5px
+                h3 
+                    font-size: 30px
+            &.active
+                background: rgba(0, 0, 0, 0.666)
+                width: 100vw
+                height: 100vh
+                display: flex
+                justify-content: center
+                align-items: center
+                position: fixed
+                top: 0
+                left: 0
+                backdrop-filter: blur(2px)
+                opacity: 1
+                form, label
+                    display: flex
+                    flex-direction: column
+                input
+                    background: transparent
+                    color: #20c7ab
+                    border: 1px #20c7ab solid 
+                    border-radius: 5px
+                    margin: 10px 0
+                    padding: 5px
+                    font-size: 18px
+                    outline: none
+                input[type="submit"]
+                    transition: color 0.2s ease, background 0.2s ease
+                    &:hover 
+                        color: #222
+                        background: #20c7ab
+                .overlay
