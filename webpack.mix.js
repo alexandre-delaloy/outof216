@@ -9,7 +9,7 @@ mix
         `${process.env.MIX_PUBLIC}/entry.js`
     )
     .sass(
-        "./src/styles/master.scss", 
+        "./src/styles/master.sass", 
         `${process.env.MIX_PUBLIC}/entry.css`
     )
     //.copyDirectory('src/assets', `${process.env.MIX_PUBLIC}`/assets`)
