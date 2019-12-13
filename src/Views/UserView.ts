@@ -15,7 +15,7 @@ export default class UserView {
             message = 'pity..';
         } else if (user.WPM <= 20) {
             message = 'not bad';
-        } else if (user.WPM <= 30) {
+        } else if (user.WPM <= 40) {
             message = 'Great !';
         } else if (user.WPM <= 60) {
             message = 'unbelievable !!';
@@ -27,7 +27,7 @@ export default class UserView {
         }
         return this.entryNode.innerHTML = `
             ${isPopin ? `
-                <div id="overlay">
+                <div id="overlay"/>
                 <div class="content">
                     <h3>${message}</h3>
             ` : ''}
@@ -50,7 +50,10 @@ export default class UserView {
                             <input type="text" placehoder="John Doe"/>
                         </label>
                         <input type="submit" value="Submit score"/>
-                    </div>
+                    </form>
+                    or
+                    <a href="">Retry</a>
+                </div>
             ` : ''}
         `;
     }

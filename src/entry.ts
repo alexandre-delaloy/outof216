@@ -4,7 +4,6 @@ import TypewriterModel from './Models/TypewriterModel';
 import TypewriterView from './Views/TypewriterView';
 import TypewriterController from './Controllers/TypewriterController';
 
-
 import './db';
 import { readData } from './db';
 
