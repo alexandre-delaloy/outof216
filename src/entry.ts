@@ -4,7 +4,9 @@ import TypewriterModel from './Models/TypewriterModel';
 import TypewriterView from './Views/TypewriterView';
 import TypewriterController from './Controllers/TypewriterController';
 
+
 import './db';
+import { readData } from './db';
 
 const RANDOM_WORDS: string[] = [];
 
@@ -28,6 +30,7 @@ const RANDOM_WORDS_SPLITTED: string[][] = RANDOM_WORDS.map((word: string) => {
     return word.split('');
 });
 
+readData();
 const twM = new TypewriterModel(RANDOM_WORDS_SPLITTED);
 const twV = new TypewriterView(document.querySelector('#tw'));
 const twC = new TypewriterController(twM, twV);
