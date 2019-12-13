@@ -1,4 +1,4 @@
-const ph = {
+export const ph = {
     user: {
         name: 'John Doe',
         WPM: 0,
@@ -11,5 +11,3 @@ const ph = {
         },
     },
 };
-
-export default ph;
