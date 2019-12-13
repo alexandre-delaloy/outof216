@@ -13,7 +13,8 @@ for (let i = 0; i < 100; i++) {
     if (
         !word.match(' ') &&
         !word.match('-') &&
-        !word.match(/[A-Z]/g)
+        !word.match(/[A-Z]/g) &&
+        !word.match(/[0-9]/g)
     ) {
         RANDOM_WORDS.push(word);
     }

@@ -6,7 +6,7 @@ import ClockModel from '../Models/ClockModel';
 import ClockView from '../Views/ClockView';
 import ClockController from '../Controllers/ClockController';
 
-import ph from '../placeholders';
+import { ph } from '../utils';
 
 import { writeUserData } from '../db';
 
@@ -25,7 +25,7 @@ export default class TypewriterController {
     constructor(model: any, view: any) {
         this.model = model;
         this.view = view;
-        this.seconds = 2;
+        this.seconds = 60;
         this.isWordFinished = false;
         this.hasToBeCorrected = false;
         this.userM = new UserModel(ph.user, false);
@@ -47,7 +47,7 @@ export default class TypewriterController {
     public handleKeys() {
         let isStarted = false;
         let i: number = 0;
-        return window.addEventListener('keydown', (e) => {
+        return window.addEventListener('keydown', e => {
             if (this.seconds <= 1) {
                 setTimeout(() => {
                     return;
@@ -123,14 +123,20 @@ export default class TypewriterController {
             this.clockC.updateView();
             if (this.seconds <= 0) {
                 clearInterval(timer);
-                // writeUserData(this.userM.getUser());
-                // this.userM.getProgression().push({
-                //     user: this.userM.getUser(),
-                // });
                 this.userM.setIsPopin(true);
-                // tslint:disable-next-line: no-console
-                console.log(this.userM);
                 new UserController(this.userM, new UserView(document.querySelector('#popin'))).updateView();
+                this.userM.setIsPopin(false);
+                document.querySelector('form').addEventListener('submit', e => {
+                    e.preventDefault();
+                    const USER = this.userM.getUser();
+                    const userInput: HTMLInputElement = document.querySelector('form input[type="text"]');
+                    USER.name = userInput.value;
+                    this.userM.setUser(USER);
+                    writeUserData(this.userM.getUser());
+                    // this.userM.getProgression().push({
+                    //     user: this.userM.getUser(),
+                    // });
+                });
             }
         }, 1000);
     }
