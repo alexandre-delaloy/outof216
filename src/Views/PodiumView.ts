@@ -9,7 +9,7 @@ export default class PodiumView {
         this.entryNode.innerHTML = `
             <strong>Podium: </strong>
             ${users.map((user: IUser, i: number) => {
-                while (i <= 5) {
+                while (i < 5) {
                     return `<li>
                         ${i + 1}.
                         ${user.name} - WPM:
