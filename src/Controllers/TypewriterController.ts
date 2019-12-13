@@ -25,10 +25,10 @@ export default class TypewriterController {
     constructor(model: any, view: any) {
         this.model = model;
         this.view = view;
-        this.seconds = 10;
+        this.seconds = 2;
         this.isWordFinished = false;
         this.hasToBeCorrected = false;
-        this.userM = new UserModel(ph.user, []);
+        this.userM = new UserModel(ph.user, false);
         this.userV = new UserView(document.querySelector('#user'));
         this.userC = new UserController(this.userM, this.userV);
         this.clockM = new ClockModel(this.seconds);
@@ -123,10 +123,14 @@ export default class TypewriterController {
             this.clockC.updateView();
             if (this.seconds <= 0) {
                 clearInterval(timer);
-                writeUserData(this.userM.getUser());
-                return this.userM.getProgression().push({
-                    user: this.userM.getUser(),
-                });
+                // writeUserData(this.userM.getUser());
+                // this.userM.getProgression().push({
+                //     user: this.userM.getUser(),
+                // });
+                this.userM.setIsPopin(true);
+                // tslint:disable-next-line: no-console
+                console.log(this.userM);
+                new UserController(this.userM, new UserView(document.querySelector('#popin'))).updateView();
             }
         }, 1000);
     }
