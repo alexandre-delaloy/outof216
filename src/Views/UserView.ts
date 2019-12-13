@@ -54,4 +54,9 @@ export default class UserView {
             ` : ''}
         `;
     }
+    private destroy() {
+        document.querySelector('#popin').className = '';
+        this.entryNode.innerHTML = '';
+        return window.location.href = '';
+    }
 }

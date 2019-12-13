@@ -12,4 +12,8 @@ export default class UserController {
             this.model.getProgression(),
         );
     }
+    public destroyView() {
+        alert('destroued');
+        return this.view.destroy();
+    }
 }
