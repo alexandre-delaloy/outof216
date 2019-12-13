@@ -16,6 +16,7 @@ export default class TypewriterController {
     private seconds: number;
     private isWordFinished: boolean;
     private hasToBeCorrected: boolean;
+    private isWordSkipped: boolean;
     private userM: any;
     private userV: any;
     private userC: any;
@@ -28,6 +29,7 @@ export default class TypewriterController {
         this.seconds = 60;
         this.isWordFinished = false;
         this.hasToBeCorrected = false;
+        this.isWordSkipped = false;
         this.userM = new UserModel(ph.user, false);
         this.userV = new UserView(document.querySelector('#user'));
         this.userC = new UserController(this.userM, this.userV);
@@ -53,6 +55,7 @@ export default class TypewriterController {
         let isStarted = false;
         let i: number = 0;
         return window.addEventListener('keydown', e => {
+            // this.isWordSkipped = false;
             if (this.seconds <= 1) {
                 setTimeout(() => {
                     return;
@@ -81,12 +84,17 @@ export default class TypewriterController {
                         this.removeFirstWord();
                         USER.words.fail++;
                         this.userM.setUser(USER);
+                        this.isWordSkipped = true;
                     }
                     USER.words.ratio = USER.words.success / USER.words.count;
                     this.isWordFinished = false;
+                    this.hasToBeCorrected = false;
                     i = 0;
                 } else if (e.code === 'Backspace') {
-                    if (!this.isWordFinished && this.hasToBeCorrected) {
+                    if (
+                        !this.isWordFinished &&
+                        this.hasToBeCorrected &&
+                        !this.isWordSkipped) {
                         this.letterCorrection(i);
                         this.hasToBeCorrected = false;
                     }
