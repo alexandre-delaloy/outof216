@@ -36,6 +36,11 @@ export default class TypewriterController {
         this.clockC = new ClockController(this.clockM, this.clockV);
     }
     public updateView() {
+        if (window.location.hash.substr(1) === 'test') {
+            this.seconds = 2;
+            this.clockM.setSeconds(this.seconds);
+            this.clockC.updateView();
+        }
         this.userC.updateView();
         this.clockC.updateView();
         return this.view.display(
@@ -116,6 +121,21 @@ export default class TypewriterController {
     private letterCorrection(i: number) {
         this.stylizeLetter('correct', i);
     }
+    private handleSubmission(formNode: HTMLElement) {
+        formNode.addEventListener('submit', e => {
+            e.preventDefault();
+            const USER = this.userM.getUser();
+            const userInput: HTMLInputElement = formNode.querySelector('input[type="text"]');
+            USER.name = userInput.value;
+            this.userM.setUser(USER);
+            writeUserData(this.userM.getUser());
+        });
+        formNode.querySelector('input[type="submit"').addEventListener('click', () => {
+            setTimeout(() => {
+                return new UserController(this.userM, new UserView(document.querySelector('#popin'))).destroyView();
+            }, 1000);
+        });
+    }
     private setTimer() {
         const timer = setInterval(() => {
             this.seconds--;
@@ -126,17 +146,7 @@ export default class TypewriterController {
                 this.userM.setIsPopin(true);
                 new UserController(this.userM, new UserView(document.querySelector('#popin'))).updateView();
                 this.userM.setIsPopin(false);
-                document.querySelector('form').addEventListener('submit', e => {
-                    e.preventDefault();
-                    const USER = this.userM.getUser();
-                    const userInput: HTMLInputElement = document.querySelector('form input[type="text"]');
-                    USER.name = userInput.value;
-                    this.userM.setUser(USER);
-                    writeUserData(this.userM.getUser());
-                    // this.userM.getProgression().push({
-                    //     user: this.userM.getUser(),
-                    // });
-                });
+                this.handleSubmission(document.querySelector('form'));
             }
         }, 1000);
     }

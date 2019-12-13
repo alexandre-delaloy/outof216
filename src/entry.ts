@@ -8,15 +8,18 @@ import './db';
 
 const RANDOM_WORDS: string[] = [];
 
-for (let i = 0; i < 100; i++) {
+let count = 0;
+while (count < 100) {
     const word = faker.random.word();
     if (
         !word.match(' ') &&
         !word.match('-') &&
         !word.match(/[A-Z]/g) &&
-        !word.match(/[0-9]/g)
+        !word.match(/[0-9]/g) &&
+        word.length < 10
     ) {
         RANDOM_WORDS.push(word);
+        count++;
     }
 
 }
