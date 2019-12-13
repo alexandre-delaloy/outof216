@@ -1,4 +1,4 @@
-export default class UserController {
+export default class PodiumController {
     private model: any;
     private view: any;
     constructor(model: any, view: any) {
@@ -7,12 +7,7 @@ export default class UserController {
     }
     public updateView() {
         return this.view.display(
-            this.model.getUser(),
-            this.model.getIsPopin(),
-            this.model.getProgression(),
+            this.model.getUsers(),
         );
-    }
-    public destroyView() {
-        return this.view.destroy();
     }
 }

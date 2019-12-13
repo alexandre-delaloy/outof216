@@ -1,4 +1,10 @@
 import * as firebase from 'firebase';
+import 'array.prototype.move';
+
+
+import PodiumModel from './Models/PodiumModel';
+import PodiumView from './Views/PodiumView';
+import PodiumController from './Controllers/PodiumController';
 
 import { IUser } from './types';
 
@@ -14,3 +20,39 @@ export const writeUserData = (user: IUser) => {
       ...user,
     });
   };
+
+export const readData = () => {
+  const ref = db.ref('users');
+  const PARSED_USERS: any[] = [];
+  ref.on('value', (snapshot: any) => {
+    const USERS = snapshot.val();
+
+    for (const key in USERS) {
+      if (USERS.hasOwnProperty(key)) {
+        const user = USERS[key];
+        PARSED_USERS.push(user);
+      }
+    }
+    PARSED_USERS.sort((a, b) => {
+      const keyA = a.WPM;
+      const keyB = b.WPM;
+      if (keyA < keyB) {
+        return 1;
+      }
+      if (keyA > keyB) {
+        return -1;
+      }
+      return 0;
+  });
+    const pdM = new PodiumModel(PARSED_USERS);
+    const pdV = new PodiumView(document.querySelector('#podium'));
+    const pdC = new PodiumController(pdM, pdV);
+    // tslint:disable-next-line: no-console
+    console.log(pdM.getUsers());
+    pdC.updateView();
+  }, (errorObject: any) =>  {
+    // tslint:disable-next-line: no-console
+    console.log('The read failed: ' + errorObject.code);
+  });
+  return PARSED_USERS;
+};
