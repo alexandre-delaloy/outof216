@@ -1,5 +1,6 @@
-import * as firebase from 'firebase';
-import 'array.prototype.move';
+import * as firebase from 'firebase/app';
+import 'firebase/analytics';
+import 'firebase/database';
 
 import PodiumModel from './Models/PodiumModel';
 import PodiumView from './Views/PodiumView';
