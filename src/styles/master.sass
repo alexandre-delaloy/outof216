@@ -3,13 +3,22 @@
         color: #20c7ab
     50%
         color: #ff9d00
+@keyframes pulse 
+    from 
+        width: 0px
+        height: 0px
+        opacity: 1
+    to 
+        width: 50px
+        height: 50px
+        opacity: 0
 
 body
     background: #111
     color: #777
     font-family: 'Solway', serif
     #app
-        max-width: 666px
+        max-width: 800px
         margin: 0 auto
         position: relative
         h1
@@ -126,3 +135,32 @@ body
                 display: block
             li 
                 list-style-type: none
+        #loader
+            pointer-events: none
+            width: 100vw
+            height: 100vh
+            background: #111
+            position: fixed
+            top: 0
+            left: 0
+            transition: opacity 0.2s ease
+            &.hidden
+                opacity: 0
+            #pulse 
+                position: fixed
+                top: 50%
+                left: 50%
+                transform: translate(-50%, -50%)
+                .pulsation 
+                    border-radius: 100%
+                    position: absolute
+                    top: 50%
+                    left: 50%
+                    transform: translate(-50%, -50%)
+                    &:first-child 
+                        background: #ff9d00
+                        animation: pulse infinite 2s ease
+                    &:last-child 
+                        background: #20c7ab
+                        animation: pulse infinite 2s ease 0.5s
+            
