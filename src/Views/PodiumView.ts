@@ -12,9 +12,9 @@ export default class PodiumView {
                 while (i < 5) {
                     return `<li>
                         ${i + 1}.
-                        ${user.name} - WPM:
-                        ${user.WPM} - Acc:
-                        ${Math.floor(user.words.ratio * 100)}%
+                        ${user.name} -
+                        ${user.WPM} WPM -
+                        Acc: ${Math.floor(user.words.ratio * 100)}%
                     </li>`;
                 }
             }).join('')}

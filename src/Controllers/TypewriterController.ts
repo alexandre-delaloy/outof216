@@ -55,7 +55,7 @@ export default class TypewriterController {
         let isStarted = false;
         let i: number = 0;
         return window.addEventListener('keydown', e => {
-            // this.isWordSkipped = false;
+            this.isWordSkipped = false;
             if (this.seconds <= 1) {
                 setTimeout(() => {
                     return;
@@ -94,7 +94,8 @@ export default class TypewriterController {
                     if (
                         !this.isWordFinished &&
                         this.hasToBeCorrected &&
-                        !this.isWordSkipped) {
+                        !this.isWordSkipped
+                    ) {
                         this.letterCorrection(i);
                         this.hasToBeCorrected = false;
                     }
