@@ -7,9 +7,9 @@ export default class PodiumView {
     }
     private display(users: IUser[]) {
         this.entryNode.innerHTML = `
-            <strong>Podium: </strong>
+            <strong>Scoreboard: </strong>
             ${users.map((user: IUser, i: number) => {
-                while (i < 5) {
+                while (i < 10) {
                     return `<li>
                         ${i + 1}.
                         ${user.name} -
