@@ -55,6 +55,7 @@ export default class TypewriterController {
         let isStarted = false;
         let i: number = 0;
         return window.addEventListener('keydown', e => {
+            document.querySelector('#tw').className = 'started';
             this.isWordSkipped = false;
             if (this.seconds <= 1) {
                 setTimeout(() => {
