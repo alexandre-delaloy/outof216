@@ -41,6 +41,9 @@ export default class TypewriterController {
         this.clockV = new ClockView(qs('#timer'));
         this.clockC = new ClockController(this.clockM, this.clockV);
     }
+    /**
+     * @returns check if test mode is enabled, then update the User & Clock view, then create a new Typewriter view
+     */
     public updateView() {
         this.setTestMode();
         this.userC.updateView();
@@ -92,7 +95,7 @@ export default class TypewriterController {
                         this.hasToBeCorrected &&
                         !this.isWordSkipped
                     ) {
-                        this.letterCorrection(i);
+                        this.stylizeLetter('correct', i);
                         this.hasToBeCorrected = false;
                     }
                 } else {
@@ -105,6 +108,12 @@ export default class TypewriterController {
             this.updateView();
         });
     }
+    /**
+     * @param type - the type of letter output (right | wrong | correct)
+     * @param i : the index of the letter ( 0, 1, 2, n)
+     * 
+     * @returns a stylization of the letter depending to the letter output
+     */
     private stylizeLetter(type: string, i: number) {
         switch (type) {
             case 'right':
@@ -119,13 +128,18 @@ export default class TypewriterController {
         }
         return this.model.setWords(this.model.getWords());
     }
+    /**
+     * @returns the list of word without the successed / skipped word
+     */
     private removeFirstWord() {
         this.model.getWords().shift();
         this.model.setWords(this.model.getWords());
     }
-    private letterCorrection(i: number) {
-        this.stylizeLetter('correct', i);
-    }
+    /**
+     * @param formNode - the HTML form node
+     * 
+     * @returns a user pushed in firebase
+     */
     private handleSubmission(formNode: HTMLElement) {
         formNode.addEventListener('submit', e => {
             e.preventDefault();

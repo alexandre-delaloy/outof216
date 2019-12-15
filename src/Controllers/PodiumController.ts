@@ -5,6 +5,9 @@ export default class PodiumController {
         this.model = model;
         this.view = view;
     }
+    /**
+     * @returns a new Podium view
+     */
     public updateView() {
         return this.view.display(this.model.getUsers());
     }
