@@ -12,10 +12,7 @@ export default class TypewriterView {
             <strong style="color:
                 ${isWordFinished ? '#23b923' : ''}
                 ${hasToBeCorrected ? '#b92323' : ''}
-            ">
-                >&nbsp;
-            </strong>
-            ${words.map((word: string[]) => {
+            ">>&nbsp;</strong>${words.map((word: string[]) => {
                 return `<span>${word.join('')}</span>`;
             }).join('&nbsp;')}
         `;
