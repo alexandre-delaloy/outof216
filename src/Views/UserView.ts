@@ -16,7 +16,7 @@ export default class UserView {
         } else if (user.WPM <= 20) {
             message = 'not bad';
         } else if (user.WPM <= 40) {
-            message = 'Great !';
+            message = 'great !';
         } else if (user.WPM <= 60) {
             message = 'unbelievable !!';
         } else if (user.WPM <= 80) {

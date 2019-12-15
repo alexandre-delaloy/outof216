@@ -10,10 +10,13 @@ import { ph } from '../utils';
 
 import { writeUserData } from '../db';
 
+const qs = (selector: any): any => document.querySelector(selector);
+
 export default class TypewriterController {
     private model: any;
     private view: any;
     private seconds: number;
+    private mode: string;
     private isWordFinished: boolean;
     private hasToBeCorrected: boolean;
     private isWordSkipped: boolean;
@@ -27,22 +30,19 @@ export default class TypewriterController {
         this.model = model;
         this.view = view;
         this.seconds = 60;
+        this.mode = 'production';
         this.isWordFinished = false;
         this.hasToBeCorrected = false;
         this.isWordSkipped = false;
         this.userM = new UserModel(ph.user, false);
-        this.userV = new UserView(document.querySelector('#user'));
+        this.userV = new UserView(qs('#user'));
         this.userC = new UserController(this.userM, this.userV);
         this.clockM = new ClockModel(this.seconds);
-        this.clockV = new ClockView(document.querySelector('#timer'));
+        this.clockV = new ClockView(qs('#timer'));
         this.clockC = new ClockController(this.clockM, this.clockV);
     }
     public updateView() {
-        if (window.location.hash.substr(1) === 'test') {
-            this.seconds = 2;
-            this.clockM.setSeconds(this.seconds);
-            this.clockC.updateView();
-        }
+        this.setTestMode();
         this.userC.updateView();
         this.clockC.updateView();
         return this.view.display(
@@ -52,16 +52,11 @@ export default class TypewriterController {
         );
     }
     public handleKeys() {
-        let isStarted = false;
+        let isStarted: boolean = false;
         let i: number = 0;
         return window.addEventListener('keydown', e => {
-            document.querySelector('#tw').className = 'started';
+            qs('#tw').className = 'started';
             this.isWordSkipped = false;
-            if (this.seconds <= 1) {
-                setTimeout(() => {
-                    return;
-                }, 1000);
-            }
             const USER = this.userM.getUser();
             if (!isStarted) {
                 this.setTimer();
@@ -138,11 +133,14 @@ export default class TypewriterController {
             const userInput: HTMLInputElement = formNode.querySelector('input[type="text"]');
             USER.name = userInput.value;
             this.userM.setUser(USER);
-            writeUserData(this.userM.getUser());
-        });
-        formNode.querySelector('input[type="submit"').addEventListener('click', () => {
+            if (this.mode !== 'test') {
+                return writeUserData(this.userM.getUser());
+            }
             setTimeout(() => {
-                return new UserController(this.userM, new UserView(document.querySelector('#popin'))).destroyView();
+                return new UserController(
+                    this.userM,
+                    new UserView(qs('#popin')),
+                ).destroyView();
             }, 1000);
         });
     }
@@ -154,10 +152,21 @@ export default class TypewriterController {
             if (this.seconds <= 0) {
                 clearInterval(timer);
                 this.userM.setIsPopin(true);
-                new UserController(this.userM, new UserView(document.querySelector('#popin'))).updateView();
+                new UserController(
+                    this.userM,
+                    new UserView(qs('#popin')),
+                ).updateView();
                 this.userM.setIsPopin(false);
-                this.handleSubmission(document.querySelector('form'));
+                this.handleSubmission(qs('form'));
             }
         }, 1000);
+    }
+    private setTestMode() {
+        if (window.location.hash.substr(1) === 'test') {
+            this.mode = 'test';
+            this.seconds = 2;
+            this.clockM.setSeconds(this.seconds);
+            this.clockC.updateView();
+        }
     }
 }
