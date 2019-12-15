@@ -6,6 +6,6 @@ export default class ClockController {
         this.view = view;
     }
     public updateView() {
-        return this.view.displayTimer(this.model.seconds);
+        return this.view.displayTimer(this.model.getSeconds());
     }
 }
