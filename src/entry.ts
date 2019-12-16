@@ -7,6 +7,8 @@ import TypewriterController from './Controllers/TypewriterController';
 import './db';
 import { readData } from './db';
 
+declare var particlesJS: any;
+
 const parseRawData = () => {
     const RANDOM_WORDS: string[] = [];
     let count: number = 0;
@@ -37,3 +39,5 @@ const twC = new TypewriterController(
 readData();
 twC.updateView();
 twC.handleKeys();
+
+particlesJS.load('particles-js', 'particles.json', null);

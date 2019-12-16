@@ -29,7 +29,7 @@ export default class UserView {
     ) {
         this.entryNode.innerHTML = `
             ${isPopin ? `
-                <div id="overlay"></div>
+                <div id="overlay" class="overlay"></div>
                 <div id="content">
                     <h3>${this.setMessage(user)}</h3>
             ` : ''}
@@ -64,9 +64,11 @@ export default class UserView {
             ` : ''}
         `;
         if (isPopin) {
-            qs('#popin').className = 'active';
-            const input: HTMLInputElement = qs('input[type="text"]');
-            input.focus();
+            setTimeout(() => {
+                qs('#popin').className = 'active';
+                const input: HTMLInputElement = qs('input[type="text"]');
+                input.focus();
+            }, 500);
         }
     }
     private destroy() {
