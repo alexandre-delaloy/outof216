@@ -1,8 +1,12 @@
+$green: #20c7ab
+$lightGreen: #83ffea
+$orange: #ff9d00
+    
 @keyframes gradient
     0%, 100%
-        color: #20c7ab
+        color: $green
     50%
-        color: #ff9d00
+        color: $orange
 @keyframes pulse 
     from 
         width: 0px
@@ -13,79 +17,85 @@
         height: 50px
         opacity: 0
 
+html
+    height: calc(100vh - 8px)
+    border: 4px rgb(40, 40, 40) solid
 body
-    background: #111
-    color: #777
+    background: rgb(25, 25, 25)
+    color: #999
     font-family: 'Solway', serif
+    font-size: 16px
+   
     #app
         max-width: 800px
         margin: 0 auto
         position: relative
         h1
-            color: #20c7ab
+            color: $green
             font-size: 40px
             margin: 0
             span
                 animation: gradient 1s infinite
         h2
-            color: #83ffea
-            font-size: 20px
+            color: $lightGreen
+            font-size: 18px
             font-style: italic
         
         strong
-            color: #ff9d00
-            font-size: 20px
+            color: $orange
+            font-size: 22px
         i
             font-style: normal
         #tw
-            background: #222
-            color: #f6f6f6
-            border: 2px #222 solid
+            background: rgb(15, 15, 15)
+            color: #fff
+            border: 2px rgb(40, 40, 40) solid
             border-radius: 5px
             padding: 20px
             margin: 20px auto
-            font-size: 20px
+            font-size: 25px
             overflow: hidden
             position: relative
             &:after
                 content: ''
-                width: 25px
+                width: 20px
                 height: 100%
-                background: linear-gradient(90deg, transparent 0%, #222 50%)
+                background: linear-gradient(90deg, transparent 0%, rgb(15, 15, 15) 50%)
                 position: absolute
                 top: 0
                 right: 0
             &.started
-                border: 2px #20c7ab solid
+                border: 2px $green solid
+            &.hurry
+                border: 2px $orange solid
 
         #box
             margin-top: 50px
             display: flex
             align-items: center
-            h3 
+            stro,ng 
                 margin: 0   
+                color: $orange
             #timer
                 display: flex
                 padding-inline-start: 0
                 margin: 0 10px
-                font-size: 14px
+                font-size: 18px
                 font-weight: bold
-                color: #83ffea
-                .second
-                    width: 5px
-                    height: 20px
-                    background: #83ffea
-                    margin: 1px
-                    list-style-type: none
+                color: $green
             #clock
                 padding-inline-start: 0
                 margin: 0
                 li
                     margin: 0 10px
                     font-size: 20px
-                    color: #83ffea
+                    color: $green
                     list-style-type: none
         #popin
+            &.active
+                opacity: 1
+                #overlay, #content
+                    opacity: 1
             #overlay
                 background: rgba(0, 0, 0, 0.666)
                 width: 100vw
@@ -95,51 +105,52 @@ body
                 top: 0
                 left: 0
                 opacity: 0
-                transition: opacity 0.2s ease
+                transition: opacity 0.5s ease
             #content
-                background: #222
+                background: rgb(25, 25, 25)
+                border: 2px rgb(40, 40, 40) solid
                 border-radius: 5px
-                padding: 50px
+                padding: 20px
                 position: fixed
                 top: 50%
                 left: 50%
                 transform: translate(-50%, -50%)
-                transition: opacity 0.2s ease
+                transition: opacity 0.5s ease
                 opacity: 0
                 h3 
                     font-size: 30px
-                    color: #ff9d00
+                    margin: 0 0 20px 0
+                    color: $orange
                 form, label
                     display: flex
                     flex-direction: column
                 input
                     background: transparent
-                    color: #20c7ab
-                    border: 1px #20c7ab solid 
+                    color: #fff
+                    border: 2px $green solid 
                     border-radius: 5px
-                    margin: 10px 0
+                    margin: 5px 0
                     padding: 5px
                     font-size: 18px
                     outline: none
                 input[type="submit"]
+                    cursor: pointer
                     transition: color 0.2s ease, background 0.2s ease
                     &:hover 
                         color: #222
-                        background: #20c7ab
+                        background: $green
                 a
-                    color: #20c7ab
-            &.active
-                opacity: 1
-                #overlay, #content
-                    opacity: 1
+                    color: $green
+            
                 
         #podium
             position: absolute
-            top: 10px
-            right: 10px
+            top: 0px
+            right: 0px
             background: #222
             padding: 10px
             border-radius: 5px
+            margin: 0
             strong
                 margin-bottom: 10px
                 display: block
@@ -168,9 +179,16 @@ body
                     left: 50%
                     transform: translate(-50%, -50%)
                     &:first-child 
-                        background: #ff9d00
+                        background: $orange
                         animation: pulse infinite 2s ease
                     &:last-child 
-                        background: #20c7ab
+                        background: $green
                         animation: pulse infinite 2s ease 0.5s
             
+        #particles-js
+            width: 100vw
+            height: 100vh
+            position: fixed
+            top: 0
+            left: 0
+            z-index: -1
