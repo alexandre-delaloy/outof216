@@ -75,7 +75,7 @@ export default class TypewriterController {
                         this.isWordFinished = true;
                     }
                 } else {
-                    if (e.code === 'Space') {
+                    if (e.code === 'Space' || e.code === 'Enter') {
                         USER.words.count++;
                         if (this.isWordFinished) {
                             this.removeFirstWord();
