@@ -22,7 +22,7 @@ export default class UserController {
             $overlay.addEventListener('click', e => {
                 e.stopPropagation();
                 this.destroyView();
-            })
+            });
         }
     }
 }
