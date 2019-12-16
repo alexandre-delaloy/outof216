@@ -149,7 +149,6 @@ export default class TypewriterController {
             e.preventDefault();
             const USER = this.userM.getUser();
             const userInput: HTMLInputElement = formNode.querySelector('input[type="text"]');
-
             USER.name = userInput.value;
             this.userM.setUser(USER);
             if (this.mode !== 'test') {

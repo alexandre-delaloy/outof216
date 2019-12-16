@@ -1,15 +1,13 @@
 import { IUser } from '../types';
 
+const qs = (selector: any): any => document.querySelector(selector);
+
 export default class UserView {
     private entryNode: HTMLElement;
     constructor(entryNode: HTMLElement) {
         this.entryNode = entryNode;
     }
-    private display(
-        user: IUser,
-        isPopin: boolean,
-        progression: any[],
-    ) {
+    private setMessage(user: IUser) {
         let message: string;
         if (user.WPM <= 0) {
             message = 'pity..';
@@ -22,13 +20,18 @@ export default class UserView {
         } else if (user.WPM <= 80) {
             message = 'godlike !!!';
         }
-        if (isPopin) {
-            document.querySelector('#popin').className = 'active';
-        }
+        return message;
+    }
+    private display(
+        user: IUser,
+        isPopin: boolean,
+        progression: any[],
+    ) {
         this.entryNode.innerHTML = `
             ${isPopin ? `
-                <div class="content">
-                    <h3>${message}</h3>
+                <div id="overlay"></div>
+                <div id="content">
+                    <h3>${this.setMessage(user)}</h3>
             ` : ''}
                     <ul>
                         <li>
@@ -61,12 +64,13 @@ export default class UserView {
             ` : ''}
         `;
         if (isPopin) {
-            const input: HTMLInputElement = document.querySelector('input[type="text"]');
+            qs('#popin').className = 'active';
+            const input: HTMLInputElement = qs('input[type="text"]');
             input.focus();
         }
     }
     private destroy() {
-        document.querySelector('#popin').className = '';
+        qs('#popin').className = '';
         this.entryNode.innerHTML = '';
         return location.reload();
     }

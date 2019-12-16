@@ -86,27 +86,29 @@ body
                     color: #83ffea
                     list-style-type: none
         #popin
-            opacity: 0
-            transition: opacity 0.2s ease
-            .content
-                background: #222
-                padding: 50px
-                border-radius: 5px
-                h3 
-                    font-size: 30px
-                    color: #ff9d00
-            &.active
+            #overlay
                 background: rgba(0, 0, 0, 0.666)
                 width: 100vw
                 height: 100vh
-                display: flex
-                justify-content: center
-                align-items: center
+                backdrop-filter: blur(6.66px)
                 position: fixed
                 top: 0
                 left: 0
-                backdrop-filter: blur(6.66px)
-                opacity: 1
+                opacity: 0
+                transition: opacity 0.2s ease
+            #content
+                background: #222
+                border-radius: 5px
+                padding: 50px
+                position: fixed
+                top: 50%
+                left: 50%
+                transform: translate(-50%, -50%)
+                transition: opacity 0.2s ease
+                opacity: 0
+                h3 
+                    font-size: 30px
+                    color: #ff9d00
                 form, label
                     display: flex
                     flex-direction: column
@@ -126,6 +128,11 @@ body
                         background: #20c7ab
                 a
                     color: #20c7ab
+            &.active
+                opacity: 1
+                #overlay, #content
+                    opacity: 1
+                
         #podium
             position: absolute
             top: 10px
