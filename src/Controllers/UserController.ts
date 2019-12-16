@@ -6,20 +6,23 @@ export default class UserController {
         this.view = view;
     }
     public updateView() {
-        this.closePopin();
-        return this.view.display(
+        this.view.display(
             this.model.getUser(),
             this.model.getIsPopin(),
             this.model.getProgression(),
         );
+        this.closePopin();
     }
     public destroyView() {
         return this.view.destroy();
     }
     private closePopin() {
-        document.querySelector('#popin').addEventListener('click', e => {
-            e.stopPropagation();
-            this.destroyView();
-        })
+        const $overlay = document.querySelector('#overlay');
+        if ($overlay) {
+            $overlay.addEventListener('click', e => {
+                e.stopPropagation();
+                this.destroyView();
+            })
+        }
     }
 }
