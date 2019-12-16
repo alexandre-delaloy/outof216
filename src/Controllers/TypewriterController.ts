@@ -111,7 +111,7 @@ export default class TypewriterController {
     /**
      * @param type - the type of letter output (right | wrong | correct)
      * @param i : the index of the letter ( 0, 1, 2, n)
-     * 
+     *
      * @returns a stylization of the letter depending to the letter output
      */
     private stylizeLetter(type: string, i: number) {
@@ -137,7 +137,7 @@ export default class TypewriterController {
     }
     /**
      * @param formNode - the HTML form node
-     * 
+     *
      * @returns a user pushed in firebase
      */
     private handleSubmission(formNode: HTMLElement) {
@@ -148,7 +148,7 @@ export default class TypewriterController {
             USER.name = userInput.value;
             this.userM.setUser(USER);
             if (this.mode !== 'test') {
-                return writeUserData(this.userM.getUser());
+                writeUserData(this.userM.getUser());
             }
             setTimeout(() => {
                 return new UserController(
