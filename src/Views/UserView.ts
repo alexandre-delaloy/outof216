@@ -25,9 +25,8 @@ export default class UserView {
         if (isPopin) {
             document.querySelector('#popin').className = 'active';
         }
-        return this.entryNode.innerHTML = `
+        this.entryNode.innerHTML = `
             ${isPopin ? `
-                <div id="overlay"/>
                 <div class="content">
                     <h3>${message}</h3>
             ` : ''}
@@ -47,7 +46,12 @@ export default class UserView {
                     <form>
                         <label>
                             Enter your pseudo:
-                            <input type="text" placehoder="John Doe"/>
+                            <input
+                                type="text"
+                                placehoder="John Doe"
+                                maxLength="12"
+                                minLength="2"
+                            />
                         </label>
                         <input type="submit" value="Submit score"/>
                     </form>
@@ -56,10 +60,14 @@ export default class UserView {
                 </div>
             ` : ''}
         `;
+        if (isPopin) {
+            const input: HTMLInputElement = document.querySelector('input[type="text"]');
+            input.focus();
+        }
     }
     private destroy() {
         document.querySelector('#popin').className = '';
         this.entryNode.innerHTML = '';
-        return window.location.href = '';
+        return location.reload();
     }
 }
