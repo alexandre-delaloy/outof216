@@ -1,3 +1,5 @@
+declare var particlesJS: any;
+
 export default class UserController {
     private model: any;
     private view: any;
@@ -19,6 +21,8 @@ export default class UserController {
     private closePopin() {
         const $overlay = document.querySelector('#overlay');
         if ($overlay) {
+            particlesJS.load('overlay', 'particles2.json', null);
+
             $overlay.addEventListener('click', e => {
                 e.stopPropagation();
                 this.destroyView();
