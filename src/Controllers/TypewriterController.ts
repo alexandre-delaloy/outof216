@@ -61,7 +61,7 @@ export default class TypewriterController {
         let i: number = 0;
         return window.addEventListener('keydown', e => {
             if (!this.isFinished) {
-                qs('#tw').className = 'started';
+                qs('#tw').classList.add('started');
                 this.isWordSkipped = false;
                 const USER = this.userM.getUser();
                 if (!isStarted) {
@@ -165,6 +165,9 @@ export default class TypewriterController {
             this.seconds--;
             this.clockM.setSeconds(this.seconds);
             this.clockC.updateView();
+            if (this.seconds <= 10) {
+                qs('#tw').classList.add('hurry');
+            }
             if (this.seconds <= 0) {
                 clearInterval(timer);
                 this.userM.setIsPopin(true);
