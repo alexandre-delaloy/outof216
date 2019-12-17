@@ -59,6 +59,7 @@ export default class TypewriterController {
     public handleKeys() {
         let isStarted: boolean = false;
         let i: number = 0;
+        this.userC.displayStats();
         return window.addEventListener('keydown', e => {
             if (!this.isFinished) {
                 qs('#tw').classList.add('started');
@@ -82,11 +83,13 @@ export default class TypewriterController {
                             USER.words.success++;
                             USER.WPM++;
                             this.userM.setUser(USER);
+                            this.userC.updateStats();
                         } else {
                             this.removeFirstWord();
                             USER.words.fail++;
                             this.userM.setUser(USER);
                             this.isWordSkipped = true;
+                            this.userC.updateStats();
                         }
                         USER.words.ratio = USER.words.success / USER.words.count;
                         this.isWordFinished = false;

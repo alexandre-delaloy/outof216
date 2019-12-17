@@ -1,7 +1,13 @@
 $green: #20c7ab
 $lightGreen: #83ffea
 $orange: #ff9d00
-    
+$success: #23b923
+$fail: #b92323
+$ratio: #232db9
+$success2: #23b92350
+$fail2: #b9232350
+$ratio2: #232db950
+
 @keyframes gradient
     0%, 100%
         color: $green
@@ -16,6 +22,10 @@ $orange: #ff9d00
         width: 50px
         height: 50px
         opacity: 0
+canvas
+    -moz-user-select: none
+    -webkit-user-select: none
+    -ms-user-select: none
 
 html
     height: calc(100vh - 8px)
@@ -68,6 +78,8 @@ body
                 border: 2px $green solid
             &.hurry
                 border: 2px $orange solid
+        #canvasBox
+            // width: 200px !important
 
         #box
             margin-top: 50px
@@ -117,6 +129,7 @@ body
                 transform: translate(-50%, -50%)
                 transition: opacity 0.5s ease
                 opacity: 0
+                
                 h3 
                     font-size: 30px
                     margin: 0 0 20px 0

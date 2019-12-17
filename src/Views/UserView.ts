@@ -1,11 +1,16 @@
 import { IUser } from '../types';
+import { Chart } from 'chart.js';
 
 const qs = (selector: any): any => document.querySelector(selector);
 
 export default class UserView {
+    public chart: any;
+    public chart2: any;
     private entryNode: HTMLElement;
     constructor(entryNode: HTMLElement) {
         this.entryNode = entryNode;
+        this.chart = null;
+        this.chart2 = null;
     }
     private setMessage(user: IUser) {
         let message: string;
@@ -75,5 +80,97 @@ export default class UserView {
         qs('#popin').className = '';
         this.entryNode.innerHTML = '';
         return location.reload();
+    }
+    private setDoughnut(success: number, fail: number, ratio: number) {
+        const ctx: any = document.getElementById('ratioChart');
+        this.chart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'success',
+                    'fail',
+                ],
+                datasets: [{
+                    label: `Ratio (${Math.floor(ratio * 100)}%)`,
+                    data: [
+                        success,
+                        fail,
+                    ],
+                    backgroundColor: [
+                        '#23b92350',
+                        '#b9232350',
+                    ],
+                    borderColor: [
+                        '#23b92350',
+                        '#b9232350',
+                    ],
+                    borderWidth: 1,
+                }],
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'bottom',
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true,
+                },
+            },
+        });
+        this.chart.canvas.parentNode.style.height = '200px';
+        this.chart.canvas.parentNode.style.width = '200px';
+    }
+    private updateDoughnut(success: number, fail: number) {
+        this.chart.data.datasets[0].data = [
+            success,
+            fail,
+        ];
+        this.chart.update();
+    }
+    private setChart(WPM: number, recordOfWPM: number) {
+        const ctx: any = document.getElementById('wpmChart');
+        this.chart2 = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'actual',
+                    'record',
+                ],
+                datasets: [{
+                    label: 'Words Per Minute',
+                    data: [
+                        WPM,
+                        recordOfWPM,
+                    ],
+                    backgroundColor: [
+                        '#20c7ab50',
+                        '#ff9d0050',
+                    ],
+                    borderColor: [
+                        '#20c7ab',
+                        '#ff9d00',
+                    ],
+                    borderWidth: 1,
+                }],
+            },
+            options: {
+                // responsive: true,
+                legend: {
+                    position: 'bottom',
+                },
+            },
+        });
+        this.chart2.canvas.parentNode.style.height = '200px';
+        this.chart2.canvas.parentNode.style.width = '200px';
+    }
+    private updateChart(WPM: number) {
+        console.log(WPM)
+        this.chart2.data.datasets[0].data = [
+            WPM,
+            42
+        ];
+        this.chart2.reset()
+        this.chart2.update();
     }
 }
