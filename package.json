@@ -48,6 +48,8 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
+    "@types/chart.js": "^2.9.5",
+    "chart.js": "^2.9.3",
     "dotenv": "^8.2.0",
     "faker": "^4.1.0",
     "firebase": "^7.5.2"
