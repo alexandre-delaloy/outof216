@@ -1,8 +1,8 @@
 node_modules
 
-.DS_Store
 .env
 .firebase-config.json
+.DS_Store
 
 mix.js.map
 mix-manifest.json
