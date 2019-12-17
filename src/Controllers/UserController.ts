@@ -43,17 +43,17 @@ export default class UserController {
             this.model.getUser().words.fail,
             this.model.getUser().words.ratio,
         );
-        // this.view.setChart(
-        //     this.model.getUser().WPM,
-        //     42,
-        // );
+        this.view.setChart(
+            this.model.getUser().WPM,
+            42,
+        );
     }
     private updateStats() {
         this.view.updateDoughnut(
             this.model.getUser().words.success,
             this.model.getUser().words.fail,
         );
-        // this.view.updateChart(this.model.getUser().WPM);
+        this.view.updateChart(this.model.getUser().WPM);
     }
 
 }

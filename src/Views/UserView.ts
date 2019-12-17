@@ -37,7 +37,6 @@ export default class UserView {
                 <div id="overlay" class="overlay"></div>
                 <div id="content">
                     <h3>${this.setMessage(user)}</h3>
-            ` : ''}
                     <ul>
                         <li>
                             WPM:
@@ -50,7 +49,6 @@ export default class UserView {
                             ( ${Math.floor(user.words.ratio * 100)}% )
                         </li>
                     </ul>
-            ${isPopin ? `
                     <form>
                         <label>
                             Enter your pseudo:
@@ -87,8 +85,8 @@ export default class UserView {
             type: 'doughnut',
             data: {
                 labels: [
-                    'success',
-                    'fail',
+                    'validated',
+                    'skipped',
                 ],
                 datasets: [{
                     label: `Ratio (${Math.floor(ratio * 100)}%)`,
@@ -118,8 +116,8 @@ export default class UserView {
                 },
             },
         });
-        this.chart.canvas.parentNode.style.height = '200px';
-        this.chart.canvas.parentNode.style.width = '200px';
+        this.chart.canvas.parentNode.style.width = '250px';
+        this.chart.canvas.parentNode.style.height = '250px';
     }
     private updateDoughnut(success: number, fail: number) {
         this.chart.data.datasets[0].data = [
@@ -155,22 +153,29 @@ export default class UserView {
                 }],
             },
             options: {
-                // responsive: true,
+                responsive: true,
                 legend: {
                     position: 'bottom',
                 },
+                scales: {
+                    xAxes: [{
+                        stacked: true,
+                    }],
+                    yAxes: [{
+                        stacked: true,
+                    }],
+                },
             },
         });
-        this.chart2.canvas.parentNode.style.height = '200px';
-        this.chart2.canvas.parentNode.style.width = '200px';
+        this.chart2.canvas.parentNode.style.width = '250px';
+        this.chart2.canvas.parentNode.style.height = '250px';
     }
     private updateChart(WPM: number) {
-        console.log(WPM)
         this.chart2.data.datasets[0].data = [
             WPM,
-            42
+            42,
         ];
-        this.chart2.reset()
+        this.chart2.reset();
         this.chart2.update();
     }
 }

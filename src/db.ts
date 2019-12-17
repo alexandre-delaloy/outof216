@@ -45,6 +45,7 @@ export const readData = () => {
             new PodiumView(document.querySelector('#podium')),
         );
         pdC.updateView();
+        window.scrollTo(0, 0)
         document.querySelector('#loader').className = 'hidden';
     });
 };

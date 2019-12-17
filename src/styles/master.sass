@@ -35,7 +35,7 @@ body
     color: #999
     font-family: 'Solway', serif
     font-size: 16px
-   
+    overflow: hidden
     #app
         max-width: 800px
         margin: 0 auto
@@ -109,13 +109,14 @@ body
                 #overlay, #content
                     opacity: 1
             #overlay
-                background: rgba(0, 0, 0, 0.666)
-                width: 100vw
-                height: 100vh
-                backdrop-filter: blur(6.66px)
+                // background: rgba(0, 0, 0, 0.666)
+                background: rgb(25, 25, 25)
+                width: calc(100vw - 8px)
+                height: 390px
+                // backdrop-filter: blur(6.66px)
                 position: fixed
-                top: 0
-                left: 0
+                top: 4px
+                left: 4px
                 opacity: 0
                 transition: opacity 0.5s ease
             #content
@@ -124,7 +125,7 @@ body
                 border-radius: 5px
                 padding: 20px
                 position: fixed
-                top: 50%
+                top: 25%
                 left: 50%
                 transform: translate(-50%, -50%)
                 transition: opacity 0.5s ease
@@ -178,6 +179,7 @@ body
             top: 0
             left: 0
             transition: opacity 0.2s ease
+            z-index: 666
             &.hidden
                 opacity: 0
             #pulse 
