@@ -2,12 +2,12 @@ node_modules
 
 .DS_Store
 .env
+.firebase-config.json
 
 mix.js.map
 mix-manifest.json
-
 firestore-debug.log
-.firebase-config.json
+
 
 build
 public/*.css
