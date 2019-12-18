@@ -59,7 +59,7 @@ export default class PodiumView {
                             '#20c7ab',
                         ],
                         borderWidth: 1,
-                        barPercentage: 0.4
+                        barPercentage: 0.4,
                     },
                     {
                         label: 'Acc',
@@ -85,7 +85,7 @@ export default class PodiumView {
                             '#b370ff',
                         ],
                         borderWidth: 1,
-                        barPercentage: 0.2
+                        barPercentage: 0.2,
                     },
                 ],
             },
@@ -100,22 +100,22 @@ export default class PodiumView {
                         },
                         gridLines: {
                             // display: false ,
-                            color: "#191919"
+                            color: '#191919',
                         },
                     }],
                     yAxes: [{
                         gridLines: {
                             // display: false ,
-                            color: "#191919"
+                            color: '#191919',
                         },
-                    }]
+                    }],
                 },
                 legend: {
                     position: 'bottom',
                 },
             },
         });
-        this.chart.canvas.parentNode.style.width = '300px'
+        this.chart.canvas.parentNode.style.width = '300px';
         // ctx.height = 200
         this.chart.canvas.parentNode.style.height = '200px';
         users.forEach((user, i) => {
@@ -124,6 +124,6 @@ export default class PodiumView {
                 this.chart.data.datasets[1].borderColor[i] = '#fffb00';
                 this.chart.update();
             }
-        })
+        });
     }
 }

@@ -161,13 +161,13 @@ export default class UserView {
                     xAxes: [{
                         stacked: true,
                         gridLines: {
-                            color: "#222"
+                            color: '#222',
                         },
                     }],
                     yAxes: [{
                         stacked: true,
                         gridLines: {
-                            color: "#222"
+                            color: '#222',
                         },
                     }],
                 },
