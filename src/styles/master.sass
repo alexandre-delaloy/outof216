@@ -7,6 +7,7 @@ $ratio: #232db9
 $success2: #23b92350
 $fail2: #b9232350
 $ratio2: #232db950
+$zduv: #fffb0050
 
 @keyframes gradient
     0%, 100%
@@ -35,7 +36,7 @@ body
     color: #999
     font-family: 'Solway', serif
     font-size: 16px
-    overflow: hidden
+    // overflow: hidden
     #app
         max-width: 800px
         margin: 0 auto
@@ -119,17 +120,19 @@ body
                 left: 4px
                 opacity: 0
                 transition: opacity 0.5s ease
+                z-index: 664
             #content
-                background: rgb(25, 25, 25)
-                border: 2px rgb(40, 40, 40) solid
-                border-radius: 5px
+                // background: rgb(25, 25, 25)
+                // border: 2px rgb(40, 40, 40) solid
+                // border-radius: 5px
                 padding: 20px
                 position: fixed
-                top: 25%
+                top: 25px
                 left: 50%
-                transform: translate(-50%, -50%)
+                transform: translateX(-50%)
                 transition: opacity 0.5s ease
                 opacity: 0
+                z-index: 665
                 
                 h3 
                     font-size: 30px
@@ -151,8 +154,7 @@ body
                     cursor: pointer
                     transition: color 0.2s ease, background 0.2s ease
                     &:hover 
-                        color: #222
-                        background: $green
+                        background: #20c7ab50
                 a
                     color: $green
             
@@ -207,3 +209,11 @@ body
             top: 0
             left: 0
             z-index: -1
+    #podiumChart
+        position: absolute
+        top: 0px
+        right: 0px
+        background: #222
+        padding: 10px
+        border-radius: 5px
+        margin: 0

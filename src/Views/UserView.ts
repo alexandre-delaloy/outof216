@@ -132,7 +132,7 @@ export default class UserView {
             type: 'bar',
             data: {
                 labels: [
-                    'actual',
+                    'current',
                     'record',
                 ],
                 datasets: [{
@@ -160,9 +160,15 @@ export default class UserView {
                 scales: {
                     xAxes: [{
                         stacked: true,
+                        gridLines: {
+                            color: "#222"
+                        },
                     }],
                     yAxes: [{
                         stacked: true,
+                        gridLines: {
+                            color: "#222"
+                        },
                     }],
                 },
             },
