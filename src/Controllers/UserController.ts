@@ -45,7 +45,7 @@ export default class UserController {
         );
         this.view.setChart(
             this.model.getUser().WPM,
-            42,
+            52,
         );
     }
     private updateStats() {

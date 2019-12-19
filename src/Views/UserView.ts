@@ -95,12 +95,12 @@ export default class UserView {
                         fail,
                     ],
                     backgroundColor: [
-                        '#23b92350',
-                        '#b9232350',
+                        '#20c7ab50',
+                        '#ff9d0050',
                     ],
                     borderColor: [
-                        '#23b92350',
-                        '#b9232350',
+                        '#20c7ab',
+                        '#ff9d00',
                     ],
                     borderWidth: 1,
                 }],
@@ -109,6 +109,10 @@ export default class UserView {
                 responsive: true,
                 legend: {
                     position: 'bottom',
+                },
+                title: {
+                    display: true,
+                    text: 'Ratio',
                 },
                 animation: {
                     animateScale: true,
@@ -154,8 +158,12 @@ export default class UserView {
             },
             options: {
                 responsive: true,
+                title: {
+                    display: true,
+                    text: 'WPM',
+                },
                 legend: {
-                    position: 'bottom',
+                   display: false,
                 },
                 scales: {
                     xAxes: [{
@@ -179,7 +187,7 @@ export default class UserView {
     private updateChart(WPM: number) {
         this.chart2.data.datasets[0].data = [
             WPM,
-            42,
+            52,
         ];
         this.chart2.reset();
         this.chart2.update();

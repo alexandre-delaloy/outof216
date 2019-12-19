@@ -33,6 +33,11 @@ export default class PodiumView {
                     `#3 - ${users[2].name}`,
                     `#4 - ${users[3].name}`,
                     `#5 - ${users[4].name}`,
+                    `#6 - ${users[5].name}`,
+                    `#7 - ${users[6].name}`,
+                    `#8 - ${users[7].name}`,
+                    `#9 - ${users[8].name}`,
+                    `#10 - ${users[9].name}`,
                 ],
                 datasets: [
                     {
@@ -43,8 +48,18 @@ export default class PodiumView {
                             users[2].WPM,
                             users[3].WPM,
                             users[4].WPM,
+                            users[5].WPM,
+                            users[6].WPM,
+                            users[7].WPM,
+                            users[8].WPM,
+                            users[9].WPM,
                         ],
                         backgroundColor: [
+                            '#20c7ab50',
+                            '#20c7ab50',
+                            '#20c7ab50',
+                            '#20c7ab50',
+                            '#20c7ab50',
                             '#20c7ab50',
                             '#20c7ab50',
                             '#20c7ab50',
@@ -57,36 +72,41 @@ export default class PodiumView {
                             '#20c7ab',
                             '#20c7ab',
                             '#20c7ab',
+                            '#20c7ab',
+                            '#20c7ab',
+                            '#20c7ab',
+                            '#20c7ab',
+                            '#20c7ab',
                         ],
                         borderWidth: 1,
-                        barPercentage: 0.4,
+                        barPercentage: 0.9,
                     },
-                    {
-                        label: 'Acc',
-                        data: [
-                            Math.floor(users[0].words.ratio * 100),
-                            Math.floor(users[1].words.ratio * 100),
-                            Math.floor(users[2].words.ratio * 100),
-                            Math.floor(users[3].words.ratio * 100),
-                            Math.floor(users[4].words.ratio * 100),
-                        ],
-                        backgroundColor: [
-                            '#b370ff50',
-                            '#b370ff50',
-                            '#b370ff50',
-                            '#b370ff50',
-                            '#b370ff50',
-                        ],
-                        borderColor: [
-                            '#b370ff',
-                            '#b370ff',
-                            '#b370ff',
-                            '#b370ff',
-                            '#b370ff',
-                        ],
-                        borderWidth: 1,
-                        barPercentage: 0.2,
-                    },
+                    // {
+                    //     label: 'Acc',
+                    //     data: [
+                    //         Math.floor(users[0].words.ratio * 100),
+                    //         Math.floor(users[1].words.ratio * 100),
+                    //         Math.floor(users[2].words.ratio * 100),
+                    //         Math.floor(users[3].words.ratio * 100),
+                    //         Math.floor(users[4].words.ratio * 100),
+                    //     ],
+                    //     backgroundColor: [
+                    //         '#b370ff50',
+                    //         '#b370ff50',
+                    //         '#b370ff50',
+                    //         '#b370ff50',
+                    //         '#b370ff50',
+                    //     ],
+                    //     borderColor: [
+                    //         '#b370ff',
+                    //         '#b370ff',
+                    //         '#b370ff',
+                    //         '#b370ff',
+                    //         '#b370ff',
+                    //     ],
+                    //     borderWidth: 1,
+                    //     barPercentage: 0.2,
+                    // },
                 ],
             },
             options: {
@@ -119,11 +139,11 @@ export default class PodiumView {
         // ctx.height = 200
         this.chart.canvas.parentNode.style.height = '200px';
         users.forEach((user, i) => {
-            if (user.words.ratio === 1) {
-                this.chart.data.datasets[1].backgroundColor[i] = '#fffb0050';
-                this.chart.data.datasets[1].borderColor[i] = '#fffb00';
-                this.chart.update();
-            }
+            // if (user.words.ratio === 1) {
+            //     this.chart.data.datasets[1].backgroundColor[i] = '#fffb0050';
+            //     this.chart.data.datasets[1].borderColor[i] = '#fffb00';
+            //     this.chart.update();
+            // }
         });
     }
 }
