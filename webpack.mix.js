@@ -16,6 +16,9 @@ mix
     .sourceMaps()
     .disableNotifications()
     .webpackConfig({
+        node: {
+            fs: 'empty',
+        },
         module: {
             rules: [
                 {

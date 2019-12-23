@@ -8,13 +8,14 @@ import ClockController from '../Controllers/ClockController';
 
 import { ph } from '../utils';
 
-import { writeUserData } from '../db';
+// import { writeUserData } from '../db';
 
 const qs = (selector: any): any => document.querySelector(selector);
 
 export default class TypewriterController {
     private model: any;
     private view: any;
+    private writeUserData: any;
     private seconds: number;
     private mode: string;
     private isWordFinished: boolean;
@@ -27,9 +28,10 @@ export default class TypewriterController {
     private clockM: any;
     private clockV: any;
     private clockC: any;
-    constructor(model: any, view: any) {
+    constructor(model: any, view: any, writeUserData: any) {
         this.model = model;
         this.view = view;
+        this.writeUserData = writeUserData;
         this.seconds = 60;
         this.mode = 'production';
         this.isWordFinished = false;
@@ -155,7 +157,7 @@ export default class TypewriterController {
             USER.name = userInput.value;
             this.userM.setUser(USER);
             if (this.mode !== 'test') {
-                writeUserData(this.userM.getUser());
+                this.writeUserData(this.userM.getUser());
             }
             return new UserController(
                 this.userM,
