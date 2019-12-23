@@ -1,8 +1,11 @@
 {
-  "name": "front-end-starter",
+  "name": "outof216",
   "version": "0.1.0",
-  "description": "a starter using TypeScript & Sass, Laravel Mix & Webpack, Jest & GitHub Actions",
-  "main": "./public/entry.js",
+  "description": "another keyboard typing speedtest",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
   "scripts": {
     "start": "npm run watch",
     "build": " npm run lint:fix && cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -16,22 +19,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blyndusk/front-end-starter.git"
+    "url": "git+https://github.com/blyndusk/outof216.git"
   },
+  "keywords": [],
   "author": {
     "name": "Alexandre Delaloy",
     "email": "alexandredlaloydev@gmail.com",
     "url": "https://a-dll.com"
   },
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/blyndusk/front-end-starter/issues"
+    "url": "https://github.com/blyndusk/outof216/issues"
   },
-  "homepage": "https://github.com/blyndusk/front-end-starter#readme",
+  "homepage": "https://github.com/blyndusk/outof216#readme",
   "devDependencies": {
     "@types/node": "^12.12.8",
     "@types/faker": "^4.1.8",
     "@types/jest": "^24.0.23",
+    "@types/chart.js": "^2.9.5",
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^2.2.2",
     "cross-env": "^6.0.3",
@@ -48,10 +53,9 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "@types/chart.js": "^2.9.5",
     "chart.js": "^2.9.3",
     "dotenv": "^8.2.0",
     "faker": "^4.1.0",
-    "firebase": "^7.5.2"
+    "firebase": "^7.6.1"
   }
 }
