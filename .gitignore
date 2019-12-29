@@ -1,7 +1,6 @@
 node_modules
 
 .env
-.firebase-config.json
 .DS_Store
 
 mix.js.map
@@ -13,3 +12,6 @@ build
 public/*.css
 public/*.js
 public/*.js.map
+
+.firebase
+firebase-debug.log
