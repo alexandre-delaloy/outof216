@@ -8,8 +8,6 @@ import ClockController from '../Controllers/ClockController';
 
 import { ph } from '../utils';
 
-// import { writeUserData } from '../db';
-
 const qs = (selector: any): any => document.querySelector(selector);
 
 export default class TypewriterController {
