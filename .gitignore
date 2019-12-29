@@ -13,5 +13,5 @@ public/*.css
 public/*.js
 public/*.js.map
 
-.firebase
+.firebase/*
 firebase-debug.log
