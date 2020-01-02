@@ -5,14 +5,10 @@ export default class PodiumController {
         this.model = model;
         this.view = view;
     }
-    /**
-     * @returns a new Podium view
-     */
-    public updateView() {
-        this.view.setPodium(this.model.users);
+    public displayView() {
         return this.view.display(this.model.getUsers());
     }
-    public updateChart() {
-        this.view.updatePodium(this.model.users);
+    public updateView() {
+        return this.view.update(this.model.getUsers());
     }
 }
