@@ -34,7 +34,6 @@
   "homepage": "https://github.com/blyndusk/outof216#readme",
   "devDependencies": {
     "@types/node": "^12.12.8",
-    "@types/faker": "^4.1.8",
     "@types/jest": "^24.0.23",
     "@types/chart.js": "^2.9.5",
     "browser-sync": "^2.26.7",
@@ -53,9 +52,9 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "chart.js": "^2.9.3",
-    "dotenv": "^8.2.0",
-    "faker": "^4.1.0",
-    "firebase": "^7.6.1"
+    "firebase": "^7.6.1",
+    "particles.js": "^2.0.0"
   }
 }
