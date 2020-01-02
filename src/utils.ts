@@ -1,3 +1,6 @@
+import PodiumModel from './Models/PodiumModel';
+import PodiumView from './Views/PodiumView';
+import PodiumController from './Controllers/PodiumController';
 
 import { IUser } from './types';
 
@@ -15,7 +18,7 @@ export const ph = {
     },
 };
 
-export const getRawData = (db: any) => {
+export const readData = (db: any) => {
     const ref = db.ref('users');
     const PARSED_USERS: IUser[] = [];
     ref.on('value', (snapshot: any) => {
@@ -34,11 +37,22 @@ export const getRawData = (db: any) => {
             }
             return 0;
         });
+        const pdC = new PodiumController(
+            new PodiumModel(PARSED_USERS),
+            new PodiumView(document.querySelector('#podium')),
+        );
+        pdC.updateView();
+        window.scrollTo(0, 0);
+        setTimeout(() => {
+            document.querySelector('#loader').className = 'hidden';
+            pdC.updateChart();
+        }, 1000);
+
     });
     return PARSED_USERS;
 };
 
-export const setData = (db: any, user: IUser) => {
+export const writeData = (db: any, user: IUser) => {
     db.ref('users/' + Math.random().toString(36).substring(7)).set({
         ...user,
     });

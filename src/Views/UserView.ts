@@ -142,8 +142,7 @@ export default class UserView {
                 datasets: [{
                     label: 'Words Per Minute',
                     data: [
-                        WPM,
-                        recordOfWPM,
+                        0, 0,
                     ],
                     backgroundColor: [
                         '#20c7ab50',
@@ -191,5 +190,6 @@ export default class UserView {
         ];
         this.chart2.reset();
         this.chart2.update();
+
     }
 }

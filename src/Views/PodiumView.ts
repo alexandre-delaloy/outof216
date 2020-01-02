@@ -43,16 +43,16 @@ export default class PodiumView {
                     {
                         label: 'WPM',
                         data: [
-                            users[0].WPM,
-                            users[1].WPM,
-                            users[2].WPM,
-                            users[3].WPM,
-                            users[4].WPM,
-                            users[5].WPM,
-                            users[6].WPM,
-                            users[7].WPM,
-                            users[8].WPM,
-                            users[9].WPM,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
                         ],
                         backgroundColor: [
                             '#20c7ab50',
@@ -136,14 +136,21 @@ export default class PodiumView {
             },
         });
         this.chart.canvas.parentNode.style.width = '300px';
-        // ctx.height = 200
         this.chart.canvas.parentNode.style.height = '200px';
-        users.forEach((user, i) => {
-            // if (user.words.ratio === 1) {
-            //     this.chart.data.datasets[1].backgroundColor[i] = '#fffb0050';
-            //     this.chart.data.datasets[1].borderColor[i] = '#fffb00';
-            //     this.chart.update();
-            // }
-        });
+    }
+    private updatePodium(users: IUser[]) {
+        this.chart.data.datasets[0].data = [
+            users[0].WPM,
+            users[1].WPM,
+            users[2].WPM,
+            users[3].WPM,
+            users[4].WPM,
+            users[5].WPM,
+            users[6].WPM,
+            users[7].WPM,
+            users[8].WPM,
+            users[9].WPM,
+        ];
+        this.chart.update();
     }
 }

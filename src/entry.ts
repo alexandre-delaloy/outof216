@@ -8,33 +8,27 @@ import TypewriterModel from './Models/TypewriterModel';
 import TypewriterView from './Views/TypewriterView';
 import TypewriterController from './Controllers/TypewriterController';
 
-import PodiumModel from './Models/PodiumModel';
-import PodiumView from './Views/PodiumView';
-import PodiumController from './Controllers/PodiumController';
-
-import { getRawData, setData, getParsedData } from './utils';
+import { readData, writeData, getParsedData } from './utils';
 
 declare var particlesJS: any;
+fetch('/__/firebase/init.json').then(async response => {
+    firebase.initializeApp(await response.json());
 
-firebase.analytics();
-const db = firebase.database();
+    firebase.analytics();
+    const db = firebase.database();
 
-const twC = new TypewriterController(
-    new TypewriterModel(getParsedData(faker)),
-    new TypewriterView(
-        document.querySelector('#tw'),
-    ),
-    (user: any) => setData(db, user),
-);
+    const twC = new TypewriterController(
+        new TypewriterModel(getParsedData(faker)),
+        new TypewriterView(
+            document.querySelector('#tw'),
+        ),
+        (user: any) => writeData(db, user),
+    );
+    readData(db);
 
-const pdC = new PodiumController(
-    new PodiumModel(getRawData(db)),
-    new PodiumView(document.querySelector('#podium')),
-);
-pdC.updateView();
-window.scrollTo(0, 0);
-document.querySelector('#loader').className = 'hidden';
-twC.updateView();
-twC.handleKeys();
+    twC.updateView();
+    twC.handleKeys();
+
+});
 
 particlesJS.load('particles-js', 'particles.json', null);

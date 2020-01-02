@@ -12,4 +12,7 @@ export default class PodiumController {
         this.view.setPodium(this.model.users);
         return this.view.display(this.model.getUsers());
     }
+    public updateChart() {
+        this.view.updatePodium(this.model.users);
+    }
 }
