@@ -1,7 +1,7 @@
-import { loadFirebaseData } from './utils';
 import Chart from 'chart.js';
+declare const particlesJS: any;
 
-declare var particlesJS: any;
+import { loadFirebaseData } from './utils';
 
 loadFirebaseData();
 

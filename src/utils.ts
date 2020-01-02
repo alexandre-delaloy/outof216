@@ -89,11 +89,8 @@ export const getRandomWords = (db: any) => {
     let RANDOM_WORDS: string[] = [];
     axios.get('https://random-word-api.herokuapp.com/word?key=GG2MGY3N&number=200')
         .then((res: any) => {
-            RANDOM_WORDS = res.data;
-            RANDOM_WORDS.forEach((el, i) => {
-                if (el.length > 10) {
-                    RANDOM_WORDS.splice(i, 1);
-                }
+            RANDOM_WORDS = res.data.filter((el: string) => {
+                return el.length <= 10;
             });
 
             const RANDOM_WORDS_SPLITTED: string[][] = RANDOM_WORDS.map((word: string) => {
