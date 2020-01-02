@@ -4,13 +4,11 @@ import { IUser } from '../types';
 export default class ChartsView {
     public ratioChart: any;
     public wpmChart: any;
-    private entryNode: HTMLElement;
-    constructor(entryNode: HTMLElement) {
-        this.entryNode = entryNode;
-        this.ratioChart = null;
-        this.wpmChart = null;
+    constructor() {
+        this.ratioChart = Chart;
+        this.wpmChart = Chart;
     }
-    private display(user: IUser, recordOfWPM: number) {
+    private display(user: IUser) {
         const ctxs: any = {
             ratio: document.getElementById('ratioChart'),
             wpm: document.getElementById('wpmChart'),
@@ -59,6 +57,11 @@ export default class ChartsView {
                     }],
                     yAxes: [{
                         stacked: true,
+                        suggestedMin: 0,
+                        beginAtZero: true,
+                        steps: 10,
+                        stepValue: 6,
+                        max: 60, //max value for the chart is 60
                         gridLines: {
                             color: '#222',
                         },
@@ -76,8 +79,7 @@ export default class ChartsView {
                 datasets: [{
                     label: `Ratio (${Math.floor(user.words.ratio * 100)}%)`,
                     data: [
-                        user.words.success,
-                        user.words.fail,
+                        50, 50,
                     ],
                     ...chartStyle,
                 }],
@@ -108,8 +110,7 @@ export default class ChartsView {
                 datasets: [{
                     label: 'Words Per Minute',
                     data: [
-                        user.WPM,
-                        recordOfWPM,
+                        100, 100,
                     ],
                    ...chartStyle,
                 }],
