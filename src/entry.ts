@@ -9,6 +9,7 @@ import TypewriterView from './Views/TypewriterView';
 import TypewriterController from './Controllers/TypewriterController';
 
 import { readData, writeData, getParsedData } from './utils';
+import Chart from 'chart.js';
 
 declare var particlesJS: any;
 fetch('/__/firebase/init.json').then(async response => {
@@ -32,3 +33,5 @@ fetch('/__/firebase/init.json').then(async response => {
 });
 
 particlesJS.load('particles-js', 'particles.json', null);
+
+Chart.defaults.global.animation.duration = 1500;

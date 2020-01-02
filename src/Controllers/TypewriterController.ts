@@ -7,6 +7,9 @@ import ClockView from '../Views/ClockView';
 import ClockController from '../Controllers/ClockController';
 
 import { ph } from '../utils';
+import ChartsModel from '../Models/ChartsModel';
+import ChartsView from '../Views/ChartsView';
+import ChartController from './ChartsController';
 
 const qs = (selector: any): any => document.querySelector(selector);
 
@@ -20,12 +23,15 @@ export default class TypewriterController {
     private hasToBeCorrected: boolean;
     private isWordSkipped: boolean;
     private isFinished: boolean;
-    private userM: any;
-    private userV: any;
-    private userC: any;
-    private clockM: any;
-    private clockV: any;
-    private clockC: any;
+    private userM: UserModel;
+    private userV: UserView;
+    private userC: UserController;
+    private clockM: ClockModel;
+    private clockV: ClockView;
+    private clockC: ClockController;
+    private chartM: ChartsModel;
+    private chartV: ChartsView;
+    private chartC: ChartController;
     constructor(model: any, view: any, writeUserData: any) {
         this.model = model;
         this.view = view;
@@ -42,6 +48,9 @@ export default class TypewriterController {
         this.clockM = new ClockModel(this.seconds);
         this.clockV = new ClockView(qs('#timer'));
         this.clockC = new ClockController(this.clockM, this.clockV);
+        this.chartM = new ChartsModel(this.userM.getUser());
+        this.chartV = new ChartsView();
+        this.chartC = new ChartController(this.chartM, this.chartV);
     }
     /**
      * @returns check if test mode is enabled, then update the User & Clock view, then create a new Typewriter view
@@ -59,7 +68,7 @@ export default class TypewriterController {
     public handleKeys() {
         let isStarted: boolean = false;
         let i: number = 0;
-        this.userC.displayStats();
+        this.chartC.displayView();
         return window.addEventListener('keydown', e => {
             if (!this.isFinished) {
                 qs('#tw').classList.add('started');
@@ -83,13 +92,13 @@ export default class TypewriterController {
                             USER.words.success++;
                             USER.WPM++;
                             this.userM.setUser(USER);
-                            this.userC.updateStats();
+                            this.chartC.updateView();
                         } else {
                             this.removeFirstWord();
                             USER.words.fail++;
                             this.userM.setUser(USER);
                             this.isWordSkipped = true;
-                            this.userC.updateStats();
+                            this.chartC.updateView();
                         }
                         USER.words.ratio = USER.words.success / USER.words.count;
                         this.isWordFinished = false;

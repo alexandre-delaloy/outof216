@@ -4,6 +4,22 @@ import PodiumController from './Controllers/PodiumController';
 
 import { IUser } from './types';
 
+import ChartsModel from './Models/ChartsModel';
+import chartView from './Views/ChartsView';
+import ChartController from './Controllers/ChartsController';
+
+import UserModel from './Models/UserModel';
+import UserView from './Views/UserView';
+
+declare global {
+    // tslint:disable-next-line: interface-name
+    interface Window {
+        loaded: boolean;
+    }
+}
+
+window.loaded = false;
+
 export const ph = {
     user: {
         name: 'John Doe',
@@ -41,11 +57,21 @@ export const readData = (db: any) => {
             new PodiumModel(PARSED_USERS),
             new PodiumView(document.querySelector('#podium')),
         );
+        const chC =  new ChartController(
+            new ChartsModel(
+                new UserModel(ph.user, false).getUser(),
+            ),
+            new chartView(),
+        )
+        chC.displayView()
         pdC.updateView();
         window.scrollTo(0, 0);
         setTimeout(() => {
+            window.loaded = true;
+           
             document.querySelector('#loader').className = 'hidden';
             pdC.updateChart();
+            chC.updateView();
         }, 1000);
 
     });
