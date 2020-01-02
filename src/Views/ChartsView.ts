@@ -1,12 +1,12 @@
-import { Chart } from 'chart.js';
+import { Chart, ChartOptions } from 'chart.js';
 import { IUser } from '../types';
 
 export default class ChartsView {
-    public ratioChart: any;
-    public wpmChart: any;
+    private ratioChart: Chart;
+    private wpmChart: Chart;
     constructor() {
-        this.ratioChart = Chart;
-        this.wpmChart = Chart;
+        this.ratioChart = null;
+        this.wpmChart = null;
     }
     private display(user: IUser) {
         const ctxs: any = {
@@ -24,7 +24,11 @@ export default class ChartsView {
             ],
             borderWidth: 1,
         };
-        const chartOptions = {
+        interface IChartsOpts {
+            ratio: ChartOptions;
+            wpm: ChartOptions;
+        }
+        const chartOptions: IChartsOpts = {
             ratio: {
                 title: {
                     display: true,
@@ -57,11 +61,6 @@ export default class ChartsView {
                     }],
                     yAxes: [{
                         stacked: true,
-                        suggestedMin: 0,
-                        beginAtZero: true,
-                        steps: 10,
-                        stepValue: 6,
-                        max: 60, //max value for the chart is 60
                         gridLines: {
                             color: '#222',
                         },
@@ -77,27 +76,14 @@ export default class ChartsView {
                     'skipped',
                 ],
                 datasets: [{
-                    label: `Ratio (${Math.floor(user.words.ratio * 100)}%)`,
                     data: [
-                        50, 50,
+                        50,
+                        50,
                     ],
                     ...chartStyle,
                 }],
             },
-            options: {
-                title: {
-                    display: true,
-                    text: 'Ratio',
-                },
-                legend: {
-                    position: 'bottom',
-                },
-                responsive: true,
-                animation: {
-                    animateScale: true,
-                    animateRotate: true,
-                },
-            },
+            options: chartOptions.ratio,
         });
 
         this.wpmChart = new Chart(ctxs.wpm, {
@@ -108,9 +94,9 @@ export default class ChartsView {
                     'record',
                 ],
                 datasets: [{
-                    label: 'Words Per Minute',
                     data: [
-                        100, 100,
+                        60,
+                        60,
                     ],
                    ...chartStyle,
                 }],
@@ -127,7 +113,6 @@ export default class ChartsView {
             user.words.success,
             user.words.fail,
         ];
-        this.wpmChart.reset();
         this.wpmChart.update();
         this.ratioChart.update();
     }
