@@ -1,4 +1,5 @@
-import { Chart, ChartOptions } from 'chart.js';
+import Chart from 'chart.js';
+import { ChartOptions } from 'chart.js';
 import { IUser } from '../types';
 
 export default class ChartsView {

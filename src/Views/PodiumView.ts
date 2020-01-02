@@ -1,116 +1,34 @@
-import { IUser } from '../types';
 import Chart from 'chart.js';
+import { IUser } from '../types';
+
+declare global {
+    // tslint:disable-next-line: interface-name
+    interface ParentNode {
+        style: any;
+    }
+}
 
 export default class PodiumView {
-    public chart: any;
-    private entryNode: HTMLElement;
-    constructor(entryNode: HTMLElement) {
-        this.entryNode = entryNode;
+    private chart: Chart;
+    constructor() {
+        this.chart = null;
     }
     private display(users: IUser[]) {
-        this.entryNode.innerHTML = `
-            <strong>Scoreboard: </strong>
-            ${users.map((user: IUser, i: number) => {
-                while (i < 10) {
-                    return `<li>
-                        ${i + 1}.
-                        ${user.name} -
-                        ${user.WPM} WPM -
-                        Acc: ${Math.floor(user.words.ratio * 100)}%
-                    </li>`;
-                }
-            }).join('')}
-        `;
-    }
-    private setPodium(users: IUser[]) {
         const ctx: any = document.getElementById('podiumChart');
         this.chart = new Chart(ctx, {
             type: 'horizontalBar',
             data: {
-                labels: [
-                    `#1 - ${users[0].name}`,
-                    `#2 - ${users[1].name}`,
-                    `#3 - ${users[2].name}`,
-                    `#4 - ${users[3].name}`,
-                    `#5 - ${users[4].name}`,
-                    `#6 - ${users[5].name}`,
-                    `#7 - ${users[6].name}`,
-                    `#8 - ${users[7].name}`,
-                    `#9 - ${users[8].name}`,
-                    `#10 - ${users[9].name}`,
-                ],
                 datasets: [
                     {
                         label: 'WPM',
-                        data: [
-                            60,
-                            60,
-                            60,
-                            60,
-                            60,
-                            60,
-                            60,
-                            60,
-                            60,
-                            60,
-                        ],
-                        backgroundColor: [
-                            '#20c7ab50',
-                            '#20c7ab50',
-                            '#20c7ab50',
-                            '#20c7ab50',
-                            '#20c7ab50',
-                            '#20c7ab50',
-                            '#20c7ab50',
-                            '#20c7ab50',
-                            '#20c7ab50',
-                            '#20c7ab50',
-                        ],
-                        borderColor: [
-                            '#20c7ab',
-                            '#20c7ab',
-                            '#20c7ab',
-                            '#20c7ab',
-                            '#20c7ab',
-                            '#20c7ab',
-                            '#20c7ab',
-                            '#20c7ab',
-                            '#20c7ab',
-                            '#20c7ab',
-                        ],
+                        backgroundColor: '#20c7ab50',
+                        borderColor: '#20c7ab',
                         borderWidth: 1,
                         barPercentage: 0.9,
                     },
-                    // {
-                    //     label: 'Acc',
-                    //     data: [
-                    //         Math.floor(users[0].words.ratio * 100),
-                    //         Math.floor(users[1].words.ratio * 100),
-                    //         Math.floor(users[2].words.ratio * 100),
-                    //         Math.floor(users[3].words.ratio * 100),
-                    //         Math.floor(users[4].words.ratio * 100),
-                    //     ],
-                    //     backgroundColor: [
-                    //         '#b370ff50',
-                    //         '#b370ff50',
-                    //         '#b370ff50',
-                    //         '#b370ff50',
-                    //         '#b370ff50',
-                    //     ],
-                    //     borderColor: [
-                    //         '#b370ff',
-                    //         '#b370ff',
-                    //         '#b370ff',
-                    //         '#b370ff',
-                    //         '#b370ff',
-                    //     ],
-                    //     borderWidth: 1,
-                    //     barPercentage: 0.2,
-                    // },
                 ],
             },
             options: {
-                // maintainAspectRatio: false,
                 responsive: true,
                 scales: {
                     xAxes: [{
@@ -119,13 +37,11 @@ export default class PodiumView {
                             beginAtZero: true,
                         },
                         gridLines: {
-                            // display: false ,
                             color: '#191919',
                         },
                     }],
                     yAxes: [{
                         gridLines: {
-                            // display: false ,
                             color: '#191919',
                         },
                     }],
@@ -135,22 +51,18 @@ export default class PodiumView {
                 },
             },
         });
+
+        for (let i = 0; i < 10; i++) {
+            this.chart.data.labels[i] = `#${i + 1} - ${users[i].name}`;
+            this.chart.data.datasets[0].data[i] = 60;
+        }
         this.chart.canvas.parentNode.style.width = '300px';
-        this.chart.canvas.parentNode.style.height = '200px';
+        this.chart.canvas.parentNode.style.height = '300px';
     }
-    private updatePodium(users: IUser[]) {
-        this.chart.data.datasets[0].data = [
-            users[0].WPM,
-            users[1].WPM,
-            users[2].WPM,
-            users[3].WPM,
-            users[4].WPM,
-            users[5].WPM,
-            users[6].WPM,
-            users[7].WPM,
-            users[8].WPM,
-            users[9].WPM,
-        ];
+    private update(users: IUser[]) {
+        for (let i = 0; i < 10; i++) {
+            this.chart.data.datasets[0].data[i] = users[i].WPM;
+        }
         this.chart.update();
     }
 }

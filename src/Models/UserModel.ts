@@ -7,11 +7,9 @@ export default class UserModel {
     constructor(
         user: IUser,
         isPopin: boolean,
-        progression?: any[],
     ) {
         this.user = user;
         this.isPopin = isPopin;
-        this.progression = progression;
     }
     public getUser() {
         return this.user;
@@ -24,11 +22,5 @@ export default class UserModel {
     }
     public setIsPopin(newIsPopin: boolean) {
         this.isPopin = newIsPopin;
-    }
-    public getProgression() {
-        return this.progression;
-    }
-    public setProgression(newProgression: any[]) {
-        this.progression = newProgression;
     }
 }

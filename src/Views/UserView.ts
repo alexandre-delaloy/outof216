@@ -1,36 +1,33 @@
 import { IUser } from '../types';
-import { Chart } from 'chart.js';
 
 const qs = (selector: any): any => document.querySelector(selector);
 
 export default class UserView {
-    public chart: any;
-    public chart2: any;
     private entryNode: HTMLElement;
     constructor(entryNode: HTMLElement) {
         this.entryNode = entryNode;
-        this.chart = null;
-        this.chart2 = null;
     }
     private setMessage(user: IUser) {
+        const MESSAGES: Array<[number, string]> = [
+            [ 0, 'Pity..' ],
+            [ 20, 'Not bad.' ],
+            [ 40, 'Great !'],
+            [ 50, 'Unbelievable !!'],
+            [ 60, 'Godlike !!!' ],
+        ];
         let message: string;
-        if (user.WPM <= 0) {
-            message = 'pity..';
-        } else if (user.WPM <= 20) {
-            message = 'not bad';
-        } else if (user.WPM <= 40) {
-            message = 'great !';
-        } else if (user.WPM <= 60) {
-            message = 'unbelievable !!';
-        } else if (user.WPM <= 80) {
-            message = 'godlike !!!';
-        }
+
+        MESSAGES.forEach(el => {
+            if (user.WPM >= el[0]) {
+                console.log(user.WPM, el[0], el[1])
+                message = el[1];
+            }
+        });
         return message;
     }
     private display(
         user: IUser,
         isPopin: boolean,
-        progression: any[],
     ) {
         this.entryNode.innerHTML = `
             ${isPopin ? `

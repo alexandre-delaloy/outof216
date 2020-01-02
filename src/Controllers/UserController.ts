@@ -1,4 +1,4 @@
-declare var particlesJS: any;
+declare const particlesJS: any;
 declare var pJSDom: any;
 
 export default class UserController {
@@ -12,9 +12,8 @@ export default class UserController {
         this.view.display(
             this.model.getUser(),
             this.model.getIsPopin(),
-            this.model.getProgression(),
         );
-        this.closePopin();
+        return this.closePopin();
     }
     public destroyView() {
         return this.view.destroy();
