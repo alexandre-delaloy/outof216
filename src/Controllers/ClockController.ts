@@ -5,10 +5,10 @@ export default class ClockController {
         this.model = model;
         this.view = view;
     }
-    /**
-     * @return a new Clock view
-     */
+    public displayView() {
+        return this.view.display(this.model.getSeconds());
+    }
     public updateView() {
-        return this.view.displayTimer(this.model.getSeconds());
+        return this.view.update(this.model.getSeconds());
     }
 }
