@@ -6,9 +6,9 @@ export default class ChartController {
         this.view = view;
     }
     public displayView() {
-        this.view.display(this.model.getUser());
+        return this.view.display(this.model.getUser());
     }
     public updateView() {
-        this.view.update(this.model.getUser());
+        return this.view.update(this.model.getUser());
     }
 }
