@@ -24,149 +24,176 @@ $zduv: #fffb0050
         height: 50px
         opacity: 0
 
-canvas
-    -moz-user-select: none
-    -webkit-user-select: none
-    -ms-user-select: none
-
-#podiumChart
-    width: 300px !important
-#ratioChart
-    width: 250px !important
-#wpmChart
-    width: 250px !important
 html
     height: calc(100vh - 8px)
     border: 4px rgb(40, 40, 40) solid
-body
-    background: rgb(25, 25, 25)
-    color: #999
-    font-family: 'Solway', serif
-    font-size: 16px
-    overflow: hidden
-    #app
-        max-width: 800px
-        margin: 0 auto
-        position: relative
-        h1
-            color: $green
-            font-size: 40px
-            margin: 0
-            span
-                animation: gradient 1s infinite
-        h2
-            color: $lightGreen
-            font-size: 18px
-            font-style: italic
-        
-        strong
-            color: $orange
-            font-size: 22px
-        i
-            font-style: normal
-        #tw
-            background: rgb(15, 15, 15)
-            color: #fff
-            border: 2px rgb(40, 40, 40) solid
-            border-radius: 5px
-            padding: 20px
-            margin: 20px auto
-            font-size: 25px
-            overflow: hidden
+    body
+        background: rgb(25, 25, 25)
+        color: #999
+        font-family: 'Solway', serif
+        font-size: 16px
+        overflow: hidden
+        #app
+            max-width: 800px
+            margin: 0 auto
             position: relative
-            &:after
-                content: ''
-                width: 20px
-                height: 100%
-                background: linear-gradient(90deg, transparent 0%, rgb(15, 15, 15) 50%)
-                position: absolute
-                top: 0
-                right: 0
-            &.started
-                border: 2px $green solid
-            &.hurry
-                border: 2px $orange solid
-        #canvasBox
-            // width: 200px !important
-
-        #box
-            margin-top: 50px
-            display: flex
-            align-items: center
-            stro,ng 
-                margin: 0   
-                color: $orange
-            #timer
-                display: flex
-                padding-inline-start: 0
-                margin: 0 10px
-                font-size: 18px
-                font-weight: bold
+            h1
                 color: $green
-            #clock
-                padding-inline-start: 0
+                font-size: 40px
                 margin: 0
-                li
-                    margin: 0 10px
-                    font-size: 20px
-                    color: $green
-                    list-style-type: none
-        #popin
-            &.active
-                opacity: 1
-                #overlay, #content
-                    opacity: 1
-            #overlay
-                // background: rgba(0, 0, 0, 0.666)
-                background: rgb(25, 25, 25)
-                width: calc(100vw - 8px)
-                height: 390px
-                // backdrop-filter: blur(6.66px)
+                span
+                    animation: gradient 1s infinite
+            h2
+                color: $lightGreen
+                font-size: 18px
+                font-style: italic
+            strong
+                color: $orange
+                font-size: 22px
+            i
+                font-style: normal
+            canvas
+                -moz-user-select: none
+                -webkit-user-select: none
+                -ms-user-select: none
+            #loader
+                pointer-events: none
+                width: 100vw
+                height: 100vh
+                background: #111
                 position: fixed
-                top: 4px
-                left: 4px
-                opacity: 0
-                transition: opacity 0.5s ease
-                z-index: 664
-            #content
-                // background: rgb(25, 25, 25)
-                // border: 2px rgb(40, 40, 40) solid
-                // border-radius: 5px
-                padding: 20px
-                position: fixed
-                top: 25px
-                left: 50%
-                transform: translateX(-50%)
-                transition: opacity 0.5s ease
-                opacity: 0
-                z-index: 665
-                
-                h3 
-                    font-size: 30px
-                    margin: 0 0 20px 0
+                top: 0
+                left: 0
+                transition: opacity 0.2s ease
+                z-index: 666
+                &.hidden
+                    opacity: 0
+                #pulse 
+                    position: fixed
+                    top: 50%
+                    left: 50%
+                    transform: translate(-50%, -50%)
+                    .pulsation 
+                        border-radius: 100%
+                        position: absolute
+                        top: 50%
+                        left: 50%
+                        transform: translate(-50%, -50%)
+                        &:first-child 
+                            background: $orange
+                            animation: pulse infinite 2s ease
+                        &:last-child 
+                            background: $green
+                            animation: pulse infinite 2s ease 0.5s
+            #timerBox
+                margin-top: 50px
+                display: flex
+                align-items: center
+                strong 
+                    margin: 0   
                     color: $orange
-                form, label
+                #timer
                     display: flex
-                    flex-direction: column
-                input
-                    background: transparent
-                    color: #fff
-                    border: 2px $green solid 
-                    border-radius: 5px
-                    margin: 5px 0
-                    padding: 5px
+                    padding-inline-start: 0
+                    margin: 0 10px
                     font-size: 18px
-                    outline: none
-                input[type="submit"]
-                    cursor: pointer
-                    transition: color 0.2s ease, background 0.2s ease
-                    &:hover 
-                        background: #20c7ab50
-                a
+                    font-weight: bold
                     color: $green
-            
-                
-        #podium
+                #clock
+                    padding-inline-start: 0
+                    margin: 0
+                    li
+                        margin: 0 10px
+                        font-size: 20px
+                        color: $green
+                        list-style-type: none 
+            #tw
+                background: rgb(15, 15, 15)
+                color: #fff
+                border: 2px rgb(40, 40, 40) solid
+                border-radius: 5px
+                padding: 20px
+                margin: 20px auto
+                font-size: 25px
+                overflow: hidden
+                position: relative
+                &:after
+                    content: ''
+                    width: 20px
+                    height: 100%
+                    background: linear-gradient(90deg, transparent 0%, rgb(15, 15, 15) 50%)
+                    position: absolute
+                    top: 0
+                    right: 0
+                &.started
+                    border: 2px $green solid
+                &.hurry
+                    border: 2px $orange solid
+            #popin
+                &.active
+                    opacity: 1
+                    #overlay, #content
+                        opacity: 1
+                #overlay
+                    background: rgb(25, 25, 25)
+                    width: calc(100vw - 8px)
+                    height: 390px
+                    position: fixed
+                    top: 4px
+                    left: 4px
+                    opacity: 0
+                    transition: opacity 0.5s ease
+                    z-index: 664
+                #content
+                    padding: 20px
+                    position: fixed
+                    top: 25px
+                    left: 50%
+                    transform: translateX(-50%)
+                    transition: opacity 0.5s ease
+                    opacity: 0
+                    z-index: 665
+                    h3 
+                        font-size: 30px
+                        margin: 0 0 20px 0
+                        color: $orange
+                    form, label
+                        display: flex
+                        flex-direction: column
+                    input
+                        background: transparent
+                        color: #fff
+                        border: 2px $green solid 
+                        border-radius: 5px
+                        margin: 5px 0
+                        padding: 5px
+                        font-size: 18px
+                        outline: none
+                    input[type="submit"]
+                        cursor: pointer
+                        transition: color 0.2s ease, background 0.2s ease
+                        &:hover 
+                            background: #20c7ab50
+                    a
+                        color: $green
+            #chartBox
+                display: flex
+                #wpmChartBox
+                    #wpmChart
+                        width: 250px !important
+                #ratioChartBox
+                    position: relative
+                    bottom: -2px
+                    #ratioChart
+                        width: 250px !important
+            #particles-js
+                width: 100vw
+                height: 100vh
+                position: fixed
+                top: 0
+                left: 0
+                z-index: -1
+        #podiumChart
             position: absolute
             top: 0px
             right: 0px
@@ -174,53 +201,4 @@ body
             padding: 10px
             border-radius: 5px
             margin: 0
-            strong
-                margin-bottom: 10px
-                display: block
-            li 
-                list-style-type: none
-        #loader
-            pointer-events: none
-            width: 100vw
-            height: 100vh
-            background: #111
-            position: fixed
-            top: 0
-            left: 0
-            transition: opacity 0.2s ease
-            z-index: 666
-            &.hidden
-                opacity: 0
-            #pulse 
-                position: fixed
-                top: 50%
-                left: 50%
-                transform: translate(-50%, -50%)
-                .pulsation 
-                    border-radius: 100%
-                    position: absolute
-                    top: 50%
-                    left: 50%
-                    transform: translate(-50%, -50%)
-                    &:first-child 
-                        background: $orange
-                        animation: pulse infinite 2s ease
-                    &:last-child 
-                        background: $green
-                        animation: pulse infinite 2s ease 0.5s
-            
-        #particles-js
-            width: 100vw
-            height: 100vh
-            position: fixed
-            top: 0
-            left: 0
-            z-index: -1
-    #podiumChart
-        position: absolute
-        top: 0px
-        right: 0px
-        background: #222
-        padding: 10px
-        border-radius: 5px
-        margin: 0
+            width: 300px !important
