@@ -12,6 +12,7 @@ build
 public/*.css
 public/*.js
 public/*.js.map
+public/*.js.LICENSE
 
-.firebase/*
+.firebase
 firebase-debug.log
