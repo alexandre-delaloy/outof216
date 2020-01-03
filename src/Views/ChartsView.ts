@@ -9,7 +9,7 @@ export default class ChartsView {
         this.ratioChart = null;
         this.wpmChart = null;
     }
-    private display(user: IUser) {
+    private display(user: IUser, recordOfWpm: number) {
         const ctxs: any = {
             ratio: document.getElementById('ratioChart'),
             wpm: document.getElementById('wpmChart'),
@@ -96,8 +96,8 @@ export default class ChartsView {
                 ],
                 datasets: [{
                     data: [
-                        60,
-                        60,
+                       recordOfWpm + recordOfWpm / 2,
+                       recordOfWpm + recordOfWpm / 2,
                     ],
                    ...chartStyle,
                 }],
@@ -105,10 +105,10 @@ export default class ChartsView {
             options: chartOptions.wpm,
         });
     }
-    private update(user: IUser) {
+    private update(user: IUser, recordOfWpm: number) {
         this.wpmChart.data.datasets[0].data = [
             user.WPM,
-            52,
+            recordOfWpm,
         ];
         this.ratioChart.data.datasets[0].data = [
             user.words.success,

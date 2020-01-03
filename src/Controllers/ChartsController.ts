@@ -6,9 +6,15 @@ export default class ChartController {
         this.view = view;
     }
     public displayView() {
-        return this.view.display(this.model.getUser());
+        return this.view.display(
+            this.model.getUser(),
+            this.model.getRecordOfWpm(),
+        );
     }
     public updateView() {
-        return this.view.update(this.model.getUser());
+        return this.view.update(
+            this.model.getUser(),
+            this.model.getRecordOfWpm(),
+        );
     }
 }

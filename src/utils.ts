@@ -28,10 +28,12 @@ export const FAKE_USER: IUser = {
     },
 };
 
+const chartM =  new ChartsModel(
+    new UserModel(FAKE_USER, false).getUser(),
+    0,
+);
 export const chartsC =  new ChartController(
-    new ChartsModel(
-        new UserModel(FAKE_USER, false).getUser(),
-    ),
+    chartM,
     new chartView(),
 );
 
@@ -67,6 +69,8 @@ export const getUsers = (db: any) => {
             }
             return 0;
         });
+
+        chartM.setRecordOfWpm(PARSED_USERS[0].WPM);
 
         const podiumC = new PodiumController(
             new PodiumModel(PARSED_USERS),
