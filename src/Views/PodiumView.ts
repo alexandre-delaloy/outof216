@@ -76,16 +76,16 @@ export default class PodiumView {
                 if (toggle) {
                     DATASET.backgroundColor = '#20c7ab50',
                     DATASET.borderColor = '#20c7ab';
-                    DATASET.label = 'WPM'
+                    DATASET.label = 'WPM';
                     DATASET.data[i] = users[i].WPM;
                 } else {
                     DATASET.backgroundColor = '#a883ff50';
                     DATASET.borderColor = '#a883ff';
-                    DATASET.label = 'ACC'
+                    DATASET.label = 'ACC';
                     DATASET.data[i] = Math.floor(users[i].words.ratio * 100);
                 }
             }
             this.chart.update();
-        })
+        });
     }
 }
