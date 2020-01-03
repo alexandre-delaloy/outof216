@@ -86,17 +86,20 @@ export const getUsers = (db: any) => {
 };
 
 export const getRandomWords = (db: any) => {
-    let RANDOM_WORDS: string[] = [];
-    axios.get('https://random-word-api.herokuapp.com/word?key=GG2MGY3N&number=200')
-        .then((res: any) => {
-            RANDOM_WORDS = res.data.filter((el: string) => {
-                return el.length <= 10;
-            });
-
+    const RANDOM_WORDS: string[] = [];
+    axios.get('./words.json')
+        .then(res => {
+            let count: number = 0;
+            while (count < 100) {
+                const word = res.data.words[Math.floor(Math.random() * res.data.words.length)];
+                if (word.length < 10 ) {
+                    RANDOM_WORDS.push(word);
+                    count++;
+                }
+            }
             const RANDOM_WORDS_SPLITTED: string[][] = RANDOM_WORDS.map((word: string) => {
                 return word.split('');
             });
-
             initApp(RANDOM_WORDS_SPLITTED, db);
         });
 };
@@ -115,7 +118,7 @@ export const initApp = (data: string[][], db: any) => {
 };
 
 export const setNewUser = (db: any, user: IUser) => {
-    db.ref('users/' + Math.random().toString(36).substring(7)).set({
+    db.ref(`users/${user.name}_${Math.random().toString(36).substring(7)}`).set({
         ...user,
     });
 };
