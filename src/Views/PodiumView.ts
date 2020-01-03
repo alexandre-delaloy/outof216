@@ -58,11 +58,34 @@ export default class PodiumView {
         }
         this.chart.canvas.parentNode.style.width = '300px';
         this.chart.canvas.parentNode.style.height = '300px';
+        // this.toggle(users);
     }
     private update(users: IUser[]) {
         for (let i = 0; i < 10; i++) {
             this.chart.data.datasets[0].data[i] = users[i].WPM;
         }
         this.chart.update();
+    }
+    private toggle(users: IUser[]) {
+        let toggle = true;
+        document.querySelector('#app').addEventListener('click', () => {
+            toggle = !toggle;
+
+            for (let i = 0; i < 10; i++) {
+                const DATASET = this.chart.data.datasets[0];
+                if (toggle) {
+                    DATASET.backgroundColor = '#20c7ab50',
+                    DATASET.borderColor = '#20c7ab';
+                    DATASET.label = 'WPM'
+                    DATASET.data[i] = users[i].WPM;
+                } else {
+                    DATASET.backgroundColor = '#a883ff50';
+                    DATASET.borderColor = '#a883ff';
+                    DATASET.label = 'ACC'
+                    DATASET.data[i] = Math.floor(users[i].words.ratio * 100);
+                }
+            }
+            this.chart.update();
+        })
     }
 }
