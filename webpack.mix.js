@@ -1,6 +1,8 @@
 
 
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 const mix = require('laravel-mix');
 
 mix
@@ -16,6 +18,9 @@ mix
     .sourceMaps()
     .disableNotifications()
     .webpackConfig({
+        optimization: {
+            minimizer: [new UglifyJsPlugin()],
+        },
         node: {
             fs: 'empty',
         },
@@ -47,3 +52,15 @@ mix
             }),
         ]
     })
+    .options({
+        uglify: {
+          uglifyOptions: {
+                warnings: false,
+                comments: false,
+                beautify: false,
+            compress: {
+                      drop_console: true,
+            }
+          }
+        }
+      });

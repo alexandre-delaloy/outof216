@@ -33,9 +33,9 @@
   },
   "homepage": "https://github.com/blyndusk/outof216#readme",
   "devDependencies": {
-    "@types/node": "^12.12.8",
-    "@types/jest": "^24.0.23",
     "@types/chart.js": "^2.9.5",
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.8",
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^2.2.2",
     "cross-env": "^6.0.3",
@@ -49,6 +49,7 @@
     "tslint": "^5.20.1",
     "typedoc": "^0.15.2",
     "typescript": "^3.7.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
