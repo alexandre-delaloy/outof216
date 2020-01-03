@@ -19,7 +19,6 @@ export default class UserView {
 
         MESSAGES.forEach(el => {
             if (user.WPM >= el[0]) {
-                console.log(user.WPM, el[0], el[1])
                 message = el[1];
             }
         });

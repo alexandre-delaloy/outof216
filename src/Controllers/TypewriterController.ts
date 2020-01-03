@@ -13,7 +13,7 @@ const qs = (selector: any): any => document.querySelector(selector);
 export default class TypewriterController {
     private model: any;
     private view: any;
-    private writeUserData: any;
+    private setNewUser: any;
     private seconds: number;
     private mode: string;
     private isWordFinished: boolean;
@@ -26,10 +26,10 @@ export default class TypewriterController {
     private clockM: ClockModel;
     private clockV: ClockView;
     private clockC: ClockController;
-    constructor(model: any, view: any, writeUserData: any) {
+    constructor(model: any, view: any, setNewUser: any) {
         this.model = model;
         this.view = view;
-        this.writeUserData = writeUserData;
+        this.setNewUser = setNewUser;
         this.seconds = 60;
         this.mode = 'production';
         this.isWordFinished = false;
@@ -169,7 +169,7 @@ export default class TypewriterController {
             USER.name = userInput.value;
             this.userM.setUser(USER);
             if (this.mode !== 'test') {
-                this.writeUserData(this.userM.getUser());
+                this.setNewUser(this.userM.getUser());
             }
             return new UserController(
                 this.userM,
