@@ -32,9 +32,11 @@ var UserView = /** @class */ (function () {
         }
     };
     UserView.prototype.destroy = function () {
-        qs('#popin').className = '';
+        if (qs('#popin')) {
+            qs('#popin').className = '';
+        }
         this.entryNode.innerHTML = '';
-        return location.reload();
+        // return location.reload();
     };
     return UserView;
 }());
