@@ -1,0 +1,19 @@
+import ChartsM from '../src/Models/ChartsModel';
+import ChartsV from '../src/Views/ChartsView';
+import ChartsC from '../src/Controllers/ChartsController';
+
+import UserModel from '../src/Models/UserModel';
+
+import { FAKE_USER } from '../src/utils';
+
+const userM = new UserModel(FAKE_USER, false);
+
+const Charts = new ChartsC(
+    new ChartsM(userM.getUser(), 20),
+    new ChartsV(),
+);
+
+test('Charts', () => {
+    // Charts.displayView();
+    Charts.updateView();
+});

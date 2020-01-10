@@ -12,7 +12,7 @@
     },
     "include": [
         "src/**/*.ts",
-        "__tests/**/*.test.ts", "src/Views/UserView.ts"
+        "__tests/*.test.ts"
     ],
     "exclude": [
         "node_modules"

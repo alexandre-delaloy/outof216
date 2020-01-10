@@ -9,7 +9,7 @@ const Clock = new ClockC(
 );
 
 test('clock', () => {
-    new ClockM(60).setSeconds(30)
+    new ClockM(60).setSeconds(30);
     Clock.displayView();
     Clock.updateView();
-})
+});
