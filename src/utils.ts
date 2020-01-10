@@ -35,6 +35,7 @@ const chartM =  new ChartsModel(
 export const chartsC =  new ChartController(
     chartM,
     new chartView(),
+    false,
 );
 
 export const loadFirebaseData = () => {

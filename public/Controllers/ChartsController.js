@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ChartController = /** @class */ (function () {
-    function ChartController(model, view) {
+    function ChartController(model, view, isTest) {
         this.model = model;
         this.view = view;
     }
