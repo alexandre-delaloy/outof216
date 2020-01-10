@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1578680041745" clover="3.2.0">
-  <project timestamp="1578680041746" name="All files">
-    <metrics statements="356" coveredstatements="135" conditionals="66" coveredconditionals="0" methods="95" coveredmethods="35" elements="517" coveredelements="170" complexity="0" loc="356" ncloc="356" packages="4" files="16" classes="16"/>
+<coverage generated="1578680520845" clover="3.2.0">
+  <project timestamp="1578680520845" name="All files">
+    <metrics statements="356" coveredstatements="140" conditionals="68" coveredconditionals="4" methods="95" coveredmethods="38" elements="519" coveredelements="182" complexity="0" loc="356" ncloc="356" packages="4" files="16" classes="16"/>
     <package name="src">
       <metrics statements="66" coveredstatements="22" conditionals="8" coveredconditionals="0" methods="13" coveredmethods="0"/>
       <file name="utils.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/utils.ts">
@@ -75,7 +75,7 @@
       </file>
     </package>
     <package name="src.Controllers">
-      <metrics statements="160" coveredstatements="43" conditionals="46" coveredconditionals="0" methods="32" coveredmethods="11"/>
+      <metrics statements="160" coveredstatements="47" conditionals="46" coveredconditionals="1" methods="32" coveredmethods="13"/>
       <file name="ChartsController.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/Controllers/ChartsController.ts">
         <metrics statements="8" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
@@ -99,12 +99,12 @@
         <line num="14" count="2" type="stmt"/>
       </file>
       <file name="PodiumController.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/Controllers/PodiumController.ts">
-        <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+        <metrics statements="8" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
@@ -228,18 +228,18 @@
         <line num="209" count="1" type="stmt"/>
       </file>
       <file name="UserController.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/Controllers/UserController.ts">
-        <metrics statements="21" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="1"/>
+        <metrics statements="21" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="7" coveredmethods="5"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="24" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
@@ -253,7 +253,7 @@
       </file>
     </package>
     <package name="src.Models">
-      <metrics statements="45" coveredstatements="34" conditionals="0" coveredconditionals="0" methods="24" coveredmethods="13"/>
+      <metrics statements="45" coveredstatements="33" conditionals="0" coveredconditionals="0" methods="24" coveredmethods="12"/>
       <file name="ChartsModel.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/Models/ChartsModel.ts">
         <metrics statements="12" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
         <line num="3" count="1" type="stmt"/>
@@ -280,11 +280,11 @@
         <line num="12" count="2" type="stmt"/>
       </file>
       <file name="PodiumModel.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/Models/PodiumModel.ts">
-        <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+        <metrics statements="7" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
@@ -300,23 +300,23 @@
         <line num="12" count="1" type="stmt"/>
       </file>
       <file name="UserModel.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/Models/UserModel.ts">
-        <metrics statements="12" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="3"/>
+        <metrics statements="12" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="4"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.Views">
-      <metrics statements="85" coveredstatements="36" conditionals="12" coveredconditionals="0" methods="26" coveredmethods="11"/>
+      <metrics statements="85" coveredstatements="38" conditionals="14" coveredconditionals="3" methods="26" coveredmethods="13"/>
       <file name="ChartsView.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/Views/ChartsView.ts">
         <metrics statements="16" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
@@ -351,13 +351,13 @@
         <line num="18" count="2" type="stmt"/>
       </file>
       <file name="PodiumView.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/Views/PodiumView.ts">
-        <metrics statements="31" coveredstatements="9" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="3"/>
+        <metrics statements="31" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
         <line num="55" count="0" type="stmt"/>
         <line num="56" count="0" type="stmt"/>
         <line num="57" count="0" type="stmt"/>
@@ -394,10 +394,10 @@
         <line num="20" count="1" type="stmt"/>
       </file>
       <file name="UserView.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/Views/UserView.ts">
-        <metrics statements="21" coveredstatements="6" conditionals="6" coveredconditionals="0" methods="8" coveredmethods="1"/>
+        <metrics statements="21" coveredstatements="11" conditionals="8" coveredconditionals="3" methods="8" coveredmethods="5"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
@@ -405,17 +405,17 @@
         <line num="22" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="65" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="65" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="66" count="0" type="stmt"/>
         <line num="67" count="0" type="stmt"/>
         <line num="68" count="0" type="stmt"/>
         <line num="69" count="0" type="stmt"/>
         <line num="73" count="1" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
+        <line num="74" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="75" count="0" type="stmt"/>
-        <line num="76" count="0" type="stmt"/>
-        <line num="78" count="1" type="stmt"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
       </file>
     </package>
   </project>

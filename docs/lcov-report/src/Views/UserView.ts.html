@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">27.27% </span>
+        <span class="strong">54.55% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>6/22</span>
+        <span class='fraction'>12/22</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">37.5% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>3/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.5% </span>
+        <span class="strong">62.5% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/8</span>
+        <span class='fraction'>5/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">28.57% </span>
+        <span class="strong">52.38% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/21</span>
+        <span class='fraction'>11/21</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -124,14 +124,16 @@
 <a name='L76'></a><a href='#L76'>76</a>
 <a name='L77'></a><a href='#L77'>77</a>
 <a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -154,7 +156,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -185,14 +187,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -200,16 +194,26 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { IUser } from '../types';
 &nbsp;
-const qs = <span class="fstat-no" title="function not covered" >(s</span>elector: any): any =&gt; <span class="cstat-no" title="statement not covered" >document.querySelector(selector);</span>
+const qs = (selector: any): any =&gt; document.querySelector(selector);
 &nbsp;
 export default class UserView {
     private entryNode: HTMLElement;
-<span class="fstat-no" title="function not covered" >    constructor(e</span>ntryNode: HTMLElement) {
-<span class="cstat-no" title="statement not covered" >        this.entryNode = entryNode;</span>
+    constructor(entryNode: HTMLElement) {
+        this.entryNode = entryNode;
     }
 <span class="fstat-no" title="function not covered" >    private s</span>etMessage(user: IUser) {
         const MESSAGES: Array&lt;[number, string]&gt; = <span class="cstat-no" title="statement not covered" >[</span>
@@ -228,12 +232,12 @@ export default class UserView {
         });
 <span class="cstat-no" title="statement not covered" >        return message;</span>
     }
-<span class="fstat-no" title="function not covered" >    private d</span>isplay(
+    private display(
         user: IUser,
         isPopin: boolean,
     ) {
-<span class="cstat-no" title="statement not covered" >        this.entryNode.innerHTML = `</span>
-            ${isPopin ? `
+        this.entryNode.innerHTML = `
+            ${isPopin ? <span class="branch-0 cbranch-no" title="branch not covered" >`</span>
                 &lt;div id="overlay" class="overlay"&gt;&lt;/div&gt;
                 &lt;div id="content"&gt;
                     &lt;h3&gt;${this.setMessage(user)}&lt;/h3&gt;
@@ -266,7 +270,7 @@ export default class UserView {
                 &lt;/div&gt;
             ` : ''}
         `;
-<span class="cstat-no" title="statement not covered" >        if (isPopin) {</span>
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (isPopin) {
 <span class="cstat-no" title="statement not covered" >            setTimeout(<span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
 <span class="cstat-no" title="statement not covered" >                qs('#popin').className = 'active';</span>
                 const input: HTMLInputElement = <span class="cstat-no" title="statement not covered" >qs('input[type="text"]');</span>
@@ -274,10 +278,12 @@ export default class UserView {
             }, 500);
         }
     }
-<span class="fstat-no" title="function not covered" >    private d</span>estroy() {
-<span class="cstat-no" title="statement not covered" >        qs('#popin').className = '';</span>
-<span class="cstat-no" title="statement not covered" >        this.entryNode.innerHTML = '';</span>
-<span class="cstat-no" title="statement not covered" >        return location.reload();</span>
+    private destroy() {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (qs('#popin')) {
+<span class="cstat-no" title="statement not covered" >            qs('#popin').className = '';</span>
+        }
+        this.entryNode.innerHTML = '';
+        // return location.reload();
     }
 }
 &nbsp;</pre></td></tr>
@@ -286,7 +292,7 @@ export default class UserView {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jan 10 2020 19:14:01 GMT+0100 (Central European Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jan 10 2020 19:22:00 GMT+0100 (Central European Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

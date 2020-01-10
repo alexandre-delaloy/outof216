@@ -71,8 +71,10 @@ export default class UserView {
         }
     }
     private destroy() {
-        qs('#popin').className = '';
+        if (qs('#popin')) {
+            qs('#popin').className = '';
+        }
         this.entryNode.innerHTML = '';
-        return location.reload();
+        // return location.reload();
     }
 }

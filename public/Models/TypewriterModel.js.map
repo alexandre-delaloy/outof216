@@ -1,0 +1,1 @@
+{"version":3,"file":"TypewriterModel.js","sourceRoot":"","sources":["../../src/Models/TypewriterModel.ts"],"names":[],"mappings":";;AAAA;IAEI,yBAAY,KAAiB;QACzB,IAAI,CAAC,KAAK,GAAG,KAAK,CAAC;IACvB,CAAC;IACM,kCAAQ,GAAf;QACI,OAAO,IAAI,CAAC,KAAK,CAAC;IACtB,CAAC;IACM,kCAAQ,GAAf,UAAgB,QAAa;QACzB,IAAI,CAAC,KAAK,GAAG,QAAQ,CAAC;IAC1B,CAAC;IACL,sBAAC;AAAD,CAAC,AAXD,IAWC"}

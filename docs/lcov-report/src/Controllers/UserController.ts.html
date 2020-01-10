@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">22.73% </span>
+        <span class="strong">59.09% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>5/22</span>
+        <span class='fraction'>13/22</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>1/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">14.29% </span>
+        <span class="strong">71.43% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/7</span>
+        <span class='fraction'>5/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">23.81% </span>
+        <span class="strong">57.14% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>5/21</span>
+        <span class='fraction'>12/21</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -91,22 +91,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -128,23 +128,23 @@ declare var pJSDom: any;
 export default class UserController {
     private model: any;
     private view: any;
-<span class="fstat-no" title="function not covered" >    constructor(m</span>odel: any, view: any) {
-<span class="cstat-no" title="statement not covered" >        this.model = model;</span>
-<span class="cstat-no" title="statement not covered" >        this.view = view;</span>
+    constructor(model: any, view: any) {
+        this.model = model;
+        this.view = view;
     }
-<span class="fstat-no" title="function not covered" >    public u</span>pdateView() {
-<span class="cstat-no" title="statement not covered" >        this.view.display(</span>
+    public updateView() {
+        this.view.display(
             this.model.getUser(),
             this.model.getIsPopin(),
         );
-<span class="cstat-no" title="statement not covered" >        return this.closePopin();</span>
+        return this.closePopin();
     }
-<span class="fstat-no" title="function not covered" >    public d</span>estroyView() {
-<span class="cstat-no" title="statement not covered" >        return this.view.destroy();</span>
+    public destroyView() {
+        return this.view.destroy();
     }
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    private c</span></span>losePopin() {
-        const $overlay = <span class="cstat-no" title="statement not covered" >document.querySelector('#overlay');</span>
-<span class="cstat-no" title="statement not covered" >        if ($overlay) {</span>
+    private closePopin() {
+        const $overlay = document.querySelector('#overlay');
+        <span class="missing-if-branch" title="if path not taken" >I</span>if ($overlay) {
 <span class="cstat-no" title="statement not covered" >            particlesJS.load('overlay', 'particles.json', <span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
                 const $p2 = <span class="cstat-no" title="statement not covered" >pJSDom[1].pJS.particles;</span>
 <span class="cstat-no" title="statement not covered" >                $p2.color.value = '#ff9d00';</span>
@@ -166,7 +166,7 @@ export default class UserController {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jan 10 2020 19:14:01 GMT+0100 (Central European Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jan 10 2020 19:22:00 GMT+0100 (Central European Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
