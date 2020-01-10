@@ -1,0 +1,20 @@
+import PodiumM from '../src/Models/PodiumModel';
+import PodiumV from '../src/Views/PodiumView';
+import PodiumC from '../src/Controllers/PodiumController';
+
+import { FAKE_USER } from '../src/utils';
+
+const FAKE_USERS = [
+    FAKE_USER,
+    FAKE_USER,
+    FAKE_USER,
+]
+const Podium = new PodiumC(
+    new PodiumM(FAKE_USERS),
+    new PodiumV(),
+);
+
+test('Podium', () => {
+    Podium.displayView();
+    Podium.updateView();
+});
