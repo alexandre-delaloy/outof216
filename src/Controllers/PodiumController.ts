@@ -1,7 +1,8 @@
 export default class PodiumController {
     private model: any;
     private view: any;
-    constructor(model: any, view: any) {
+    private isTest:  boolean;
+    constructor(model: any, view: any, isTest: boolean) {
         this.model = model;
         this.view = view;
     }
@@ -9,6 +10,8 @@ export default class PodiumController {
         return this.view.display(this.model.getUsers());
     }
     public updateView() {
-        return this.view.update(this.model.getUsers());
+        if (!this.isTest) {
+            return this.view.update(this.model.getUsers());
+        }
     }
 }

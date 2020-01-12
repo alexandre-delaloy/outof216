@@ -19,13 +19,15 @@ const WORDS = [
     ['f', 'o', 'o'],
     ['b', 'a', 'r'],
 ];
+const _TypewriterM = new TypewriterM(WORDS);
 const Typewriter = new TypewriterC(
-    new TypewriterM(WORDS),
+    _TypewriterM,
     new TypewriterV($typewriter),
     (user: any) => setNewUser(null, user),
 );
 
 test('Typewriter', () => {
+    _TypewriterM.setWords(WORDS);
     Typewriter.updateView();
     Typewriter.handleKeys();
 });

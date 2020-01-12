@@ -76,6 +76,7 @@ export const getUsers = (db: any) => {
         const podiumC = new PodiumController(
             new PodiumModel(PARSED_USERS),
             new PodiumView(),
+            false,
         );
 
         chartsC.displayView();
