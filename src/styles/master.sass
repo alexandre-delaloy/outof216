@@ -51,16 +51,59 @@ html
                 -moz-user-select: none
                 -webkit-user-select: none
                 -ms-user-select: none
+            #mobile-loader
+                pointer-events: none
+                width: 100vw
+                height: 100vh
+                background: #111
+                color: $green
+                position: fixed
+                top: 0
+                left: 0
+                z-index: 665
+                display: block
+                span 
+                    width: 100%
+                    padding: 20px
+                    text-align: center
+                    position: fixed
+                    top: 50%
+                    left: 50%
+                    transform: translate(-50%, -50%)
+                    font-size: 24px
+                @media screen and ( max-width: 578  )
+                    display: none
+
             #loader
                 pointer-events: none
                 width: 100vw
                 height: 100vh
                 background: #111
+                color: $green
                 position: fixed
                 top: 0
                 left: 0
                 transition: opacity 0.2s ease
                 z-index: 666
+                #loaderBox
+                    font-size: 36px
+                    position: fixed
+                    top: 50%
+                    left: 50%
+                    transform: translate(-50%, -50%)
+                    display: flex
+                    #loaderTick
+                        color: $orange
+                        animation: tick 0.5s infinite ease
+                        font-size: 40px
+                        position: relative
+                        bottom: 2px
+
+                    @keyframes tick 
+                        from 
+                            opacity: 0
+                        to 
+                            opacity: 1
 
                 svg 
                     position: fixed
