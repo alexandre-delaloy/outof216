@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Solway';
+    src: url('Solway-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Solway';
+    src: url('Solway-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Solway';
+    src: url('Solway-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Solway';
+    src: url('Solway-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+}
