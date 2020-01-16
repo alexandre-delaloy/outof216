@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="244px" height="244px" viewBox="0 0 244 244" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>logo</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="logo">
+            <circle id="Oval" stroke="#20C7AB" stroke-width="10" cx="122" cy="122" r="117"></circle>
+            <circle id="Oval" stroke="#FF9D00" stroke-width="20" cx="122" cy="122" r="83"></circle>
+            <text id="216" font-family="Solway-ExtraBold, Solway" font-size="72" font-weight="600" fill="#83FFEA">
+                <tspan x="63" y="149">216</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
