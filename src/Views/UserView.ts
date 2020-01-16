@@ -75,6 +75,6 @@ export default class UserView {
             qs('#popin').className = '';
         }
         this.entryNode.innerHTML = '';
-        // return location.reload();
+        return location.reload();
     }
 }
