@@ -98,7 +98,7 @@ export const getRandomWords = (db: any) => {
             let count: number = 0;
             while (count < 100) {
                 const word = res.data.words[Math.floor(Math.random() * res.data.words.length)];
-                if (word.length < 10 ) {
+                if (word.length <= 10 && word.length >= 5) {
                     RANDOM_WORDS.push(word);
                     count++;
                 }
