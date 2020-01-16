@@ -87,7 +87,7 @@ export const getUsers = (db: any) => {
             document.querySelector('#loader').className = 'hidden';
             podiumC.updateView();
             chartsC.updateView();
-        }, 2000);
+        }, 1000);
     });
 };
 

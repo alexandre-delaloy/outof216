@@ -3,7 +3,7 @@ declare const particlesJS: any;
 
 import { loadFirebaseData, typeWrite } from './utils';
 
-setTimeout(typeWrite, 500);
+setTimeout(typeWrite, 250);
 
 loadFirebaseData();
 
