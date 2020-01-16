@@ -22,6 +22,6 @@ const Podium = new PodiumC(
 
 test('Podium', () => {
     _PodiumM.setUsers(FAKE_USERS);
-    Podium.displayView();
-    Podium.updateView();
+    // Podium.displayView();
+    // Podium.updateView();
 });

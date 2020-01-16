@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1578856875752" clover="3.2.0">
-  <project timestamp="1578856875752" name="All files">
-    <metrics statements="359" coveredstatements="196" conditionals="72" coveredconditionals="8" methods="95" coveredmethods="65" elements="526" coveredelements="269" complexity="0" loc="359" ncloc="359" packages="4" files="16" classes="16"/>
+<coverage generated="1579180207480" clover="3.2.0">
+  <project timestamp="1579180207481" name="All files">
+    <metrics statements="371" coveredstatements="188" conditionals="74" coveredconditionals="11" methods="97" coveredmethods="59" elements="542" coveredelements="258" complexity="0" loc="371" ncloc="371" packages="4" files="16" classes="16"/>
     <package name="src">
-      <metrics statements="66" coveredstatements="22" conditionals="8" coveredconditionals="0" methods="13" coveredmethods="0"/>
+      <metrics statements="78" coveredstatements="23" conditionals="10" coveredconditionals="0" methods="15" coveredmethods="0"/>
       <file name="utils.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/utils.ts">
-        <metrics statements="66" coveredstatements="22" conditionals="8" coveredconditionals="0" methods="13" coveredmethods="0"/>
+        <metrics statements="78" coveredstatements="23" conditionals="10" coveredconditionals="0" methods="15" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="3" count="4" type="stmt"/>
@@ -72,20 +72,32 @@
         <line num="123" count="0" type="stmt"/>
         <line num="126" count="4" type="stmt"/>
         <line num="127" count="0" type="stmt"/>
+        <line num="132" count="4" type="stmt"/>
+        <line num="133" count="0" type="stmt"/>
+        <line num="134" count="0" type="stmt"/>
+        <line num="135" count="0" type="stmt"/>
+        <line num="136" count="0" type="stmt"/>
+        <line num="137" count="0" type="stmt"/>
+        <line num="138" count="0" type="stmt"/>
+        <line num="139" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="140" count="0" type="stmt"/>
+        <line num="141" count="0" type="stmt"/>
+        <line num="142" count="0" type="stmt"/>
+        <line num="144" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.Controllers">
-      <metrics statements="163" coveredstatements="77" conditionals="50" coveredconditionals="3" methods="32" coveredmethods="22"/>
+      <metrics statements="163" coveredstatements="74" conditionals="50" coveredconditionals="2" methods="32" coveredmethods="19"/>
       <file name="ChartsController.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/Controllers/ChartsController.ts">
-        <metrics statements="10" coveredstatements="9" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="4"/>
+        <metrics statements="10" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="2"/>
         <line num="1" count="4" type="stmt"/>
         <line num="6" count="5" type="stmt"/>
         <line num="7" count="5" type="stmt"/>
         <line num="8" count="5" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
         <line num="16" count="4" type="stmt"/>
-        <line num="17" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="18" count="0" type="stmt"/>
         <line num="24" count="4" type="stmt"/>
       </file>
@@ -101,12 +113,12 @@
         <line num="14" count="5" type="stmt"/>
       </file>
       <file name="PodiumController.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/Controllers/PodiumController.ts">
-        <metrics statements="9" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="3"/>
+        <metrics statements="9" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="2"/>
         <line num="1" count="4" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="9" count="4" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
         <line num="12" count="4" type="stmt"/>
         <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="14" count="0" type="stmt"/>
@@ -256,18 +268,18 @@
       </file>
     </package>
     <package name="src.Models">
-      <metrics statements="45" coveredstatements="45" conditionals="0" coveredconditionals="0" methods="24" coveredmethods="24"/>
+      <metrics statements="45" coveredstatements="42" conditionals="0" coveredconditionals="0" methods="24" coveredmethods="21"/>
       <file name="ChartsModel.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/Models/ChartsModel.ts">
-        <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+        <metrics statements="12" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="4"/>
         <line num="3" count="4" type="stmt"/>
         <line num="7" count="5" type="stmt"/>
         <line num="8" count="5" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
         <line num="13" count="4" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="16" count="4" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
         <line num="19" count="4" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="22" count="4" type="stmt"/>
@@ -283,11 +295,11 @@
         <line num="12" count="5" type="stmt"/>
       </file>
       <file name="PodiumModel.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/Models/PodiumModel.ts">
-        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
         <line num="3" count="4" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="8" count="4" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
         <line num="11" count="4" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="14" count="4" type="stmt"/>
@@ -319,19 +331,19 @@
       </file>
     </package>
     <package name="src.Views">
-      <metrics statements="85" coveredstatements="52" conditionals="14" coveredconditionals="5" methods="26" coveredmethods="19"/>
+      <metrics statements="85" coveredstatements="49" conditionals="14" coveredconditionals="9" methods="26" coveredmethods="19"/>
       <file name="ChartsView.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/Views/ChartsView.ts">
-        <metrics statements="16" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+        <metrics statements="16" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
         <line num="1" count="4" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
         <line num="9" count="5" type="stmt"/>
         <line num="10" count="5" type="stmt"/>
         <line num="12" count="4" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="72" count="1" type="stmt"/>
-        <line num="90" count="1" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
         <line num="108" count="4" type="stmt"/>
         <line num="109" count="0" type="stmt"/>
         <line num="113" count="0" type="stmt"/>
@@ -354,16 +366,16 @@
         <line num="18" count="5" type="stmt"/>
       </file>
       <file name="PodiumView.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/Views/PodiumView.ts">
-        <metrics statements="31" coveredstatements="12" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="3"/>
+        <metrics statements="31" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="2"/>
         <line num="1" count="4" type="stmt"/>
         <line num="11" count="4" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="16" count="4" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="55" count="1" type="stmt"/>
-        <line num="56" count="1" type="stmt"/>
-        <line num="57" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
         <line num="59" count="0" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
         <line num="63" count="4" type="stmt"/>
@@ -397,26 +409,26 @@
         <line num="20" count="4" type="stmt"/>
       </file>
       <file name="UserView.ts" path="/Users/alexandre.delaloy/_/PERSO/outof216/src/Views/UserView.ts">
-        <metrics statements="21" coveredstatements="11" conditionals="8" coveredconditionals="3" methods="8" coveredmethods="5"/>
+        <metrics statements="21" coveredstatements="18" conditionals="8" coveredconditionals="7" methods="8" coveredmethods="7"/>
         <line num="3" count="4" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
         <line num="27" count="4" type="stmt"/>
         <line num="31" count="2" type="stmt"/>
-        <line num="65" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="66" count="0" type="stmt"/>
+        <line num="65" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="66" count="1" type="stmt"/>
         <line num="67" count="0" type="stmt"/>
         <line num="68" count="0" type="stmt"/>
         <line num="69" count="0" type="stmt"/>
         <line num="73" count="4" type="stmt"/>
         <line num="74" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="75" count="0" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
         <line num="77" count="1" type="stmt"/>
         <line num="80" count="4" type="stmt"/>
       </file>

@@ -23,6 +23,6 @@ const Charts = new ChartsC(
 test('Charts', () => {
     _ChartsM.setUser(FAKE_USER);
     _ChartsM.setRecordOfWpm(42);
-    Charts.displayView();
-    Charts.updateView();
+    // Charts.displayView();
+    // Charts.updateView();
 });

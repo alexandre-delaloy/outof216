@@ -87,7 +87,7 @@ export const getUsers = (db: any) => {
             document.querySelector('#loader').className = 'hidden';
             podiumC.updateView();
             chartsC.updateView();
-        }, 1000);
+        }, 2000);
     });
 };
 
@@ -127,4 +127,21 @@ export const setNewUser = (db: any, user: IUser) => {
     db.ref(`users/${user.name}_${Math.random().toString(36).substring(7)}`).set({
         ...user,
     });
+};
+
+export const typeWrite = () => {
+    const $loaderBox: HTMLElement = document.querySelector('#loaderBox');
+    const $loaderString: HTMLElement = $loaderBox.querySelector('#loaderString');
+    const THE_STRING: string[] = [...$loaderBox.dataset.string];
+    let i = 0;
+    let displayedString = '';
+    const doWrite = setInterval(() => {
+        if (i < THE_STRING.length) {
+            displayedString += THE_STRING[i];
+            $loaderString.innerHTML = displayedString;
+            i++;
+        } else {
+            clearInterval(doWrite);
+        }
+    }, parseInt($loaderBox.dataset.speed));
 };

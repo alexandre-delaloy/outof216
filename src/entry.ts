@@ -1,7 +1,9 @@
 import Chart from 'chart.js';
 declare const particlesJS: any;
 
-import { loadFirebaseData } from './utils';
+import { loadFirebaseData, typeWrite } from './utils';
+
+setTimeout(typeWrite, 500);
 
 loadFirebaseData();
 
