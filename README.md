@@ -2,9 +2,7 @@
     <img src="./public/logo.png"/>
 </p>
 
-
-
-<p>
+<p align="center">
     <a href="https://github.com/blyndusk/front-end-starter/actions">
         <img alt="Build Status" src="https://github.com/blyndusk/front-end-starter/workflows/Main%20Workflow/badge.svg" />
     </a>
