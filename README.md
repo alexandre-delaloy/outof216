@@ -10,7 +10,7 @@
         <img alt="Website status" src="https://img.shields.io/website?url=https%3A%2F%2Foutof216.web.app"/>
     </a>
     <a href="https://codecov.io/gh/blyndusk/outof216">
-        <img src="https://img.shields.io/codecov/c/github/blyndusk/outof216?token=9621a747-0e7f-4f6b-9135-a8c2b8428eee"/>
+        <img alt="Coverage" src="https://img.shields.io/codecov/c/github/blyndusk/outof216"/>
     </a>
     <a href="https://github.com/blyndusk/outof216/blob/master/LICENSE">
         <img src="https://img.shields.io/github/license/blyndusk/outof216" alt="license"/>

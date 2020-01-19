@@ -247,13 +247,51 @@ html
                 top: 0
                 left: 0
                 z-index: -1
-        #podiumChart
-            position: absolute
-            top: 0px
-            right: 0px
-            background: #222
-            padding: 10px
-            border-radius: 5px
-            margin: 0
-            width: 300px !important
-            height: 300px !important
+            #podiumChart
+                position: absolute
+                top: 0px
+                right: 0px
+                background: #222
+                padding: 10px
+                border-radius: 5px
+                margin: 0
+                width: 300px !important
+                height: 300px !important
+            #info
+                background: #20c7ab50
+                color: $orange
+                width: 40px
+                height: 40px
+                border: 2px $green solid
+                border-radius: 100%
+                text-align: center
+                font-size: 24px
+                font-weight: 500
+                position: fixed
+                bottom: 20px
+                right: 20px
+                overflow: hidden
+                transition: width 0.2s ease, height 0.2s ease,
+
+                &:hover
+                    // background: #ff9d0050
+                    border-radius: 2px
+                    width: 400px
+                    height: 100px
+                    span 
+                        opacity: 0
+                    p
+                        display: block
+                        z-index: initial
+                span 
+                    padding-top: 6px
+                    display: block
+                p
+                    color: #999
+                    display: none   
+                    transition: opacity 0.2s ease 0.2s
+                    position: relative
+                    z-index: -1
+                    font-size: 20px
+
+                    
