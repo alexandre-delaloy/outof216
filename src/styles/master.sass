@@ -9,15 +9,6 @@ $fail: #b92323
         color: $green
     50%
         color: $orange
-@keyframes pulse 
-    from 
-        width: 0px
-        height: 0px
-        opacity: 1
-    to 
-        width: 50px
-        height: 50px
-        opacity: 0
 @keyframes tick 
     from 
         opacity: 0
@@ -185,9 +176,9 @@ html
                     border: 2px $orange solid
             #popin
                 &.active
-                    opacity: 1
+                    visibility: visible
                     #overlay, #content
-                        opacity: 1
+                        visibility: visible
                 #overlay
                     background: rgb(25, 25, 25)
                     width: calc(100vw - 8px)
@@ -195,8 +186,8 @@ html
                     position: fixed
                     top: 4px
                     left: 4px
-                    opacity: 0
-                    transition: opacity 0.5s ease
+                    visibility: hidden
+                    transition: visibility 0.5s ease
                     z-index: 664
                 #content
                     padding: 20px
@@ -204,8 +195,8 @@ html
                     top: 25px
                     left: 50%
                     transform: translateX(-50%)
-                    transition: opacity 0.5s ease
-                    opacity: 0
+                    transition: visibility 0.5s ease
+                    visibility: hidden
                     z-index: 665
                     h3 
                         font-size: 30px
@@ -264,6 +255,7 @@ html
                 height: 40px
                 border: 2px $green solid
                 border-radius: 100%
+                line-height: 40px
                 text-align: center
                 font-size: 24px
                 font-weight: 500
@@ -271,27 +263,27 @@ html
                 bottom: 20px
                 right: 20px
                 overflow: hidden
-                transition: width 0.2s ease, height 0.2s ease,
-
                 &:hover
-                    // background: #ff9d0050
-                    border-radius: 2px
-                    width: 400px
-                    height: 100px
-                    span 
-                        opacity: 0
-                    p
-                        display: block
-                        z-index: initial
-                span 
-                    padding-top: 6px
-                    display: block
-                p
+                    #report
+                        opacity: 1
+                #report
+                    background: rgb(25, 25, 25)
                     color: #999
-                    display: none   
-                    transition: opacity 0.2s ease 0.2s
-                    position: relative
-                    z-index: -1
-                    font-size: 20px
+                    border: 4px rgb(40, 40, 40) solid
+                    width: 100vw
+                    padding: 12px 20px
+                    font-size: 16px
+                    position: fixed
+                    bottom: 0
+                    left: 0
+                    opacity: 0
+                    transition: opacity 0.2s ease
+                    p 
+                        text-align: left
+                        a
+                            color: $green
+                            &:hover
+                                color: $orange
+            
 
                     
