@@ -2,6 +2,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/database';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 import ChartsModel from './Models/ChartsModel';
 import chartView from './Views/ChartsView';
@@ -19,7 +20,10 @@ import { IUser } from './types';
 export const FAKE_USER: IUser = {
     name: 'John Doe',
     WPM: 0,
-    LPS: 0,
+    LPS: {
+        all: [0, 0, 0, 0, 0, 0],
+        average: 0,
+    },
     words: {
         count: 0,
         success: 0,
@@ -146,36 +150,12 @@ export const typeWrite = () => {
     }, parseInt($loaderBox.dataset.speed));
 };
 
-const setCookie = (name: string, value: string, days?: number) => {
-    let expires = '';
-    if (days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = `; expires=${date.toUTCString()}`;
-    }
-    document.cookie = `${name}=${(value || '')}${expires}; path=/`;
-};
-const getCookie = (name: string) => {
-    const nameEQ = name + '=';
-    const ca = document.cookie.split(';');
-    // tslint:disable-next-line: prefer-for-of
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) === ' ') {
-            c = c.substring(1, c.length);
-        }
-        if (c.indexOf(nameEQ) === 0) {
-            return c.substring(nameEQ.length, c.length);
-        }
-    }
-    return null;
-};
 export const handleCookies = () => {
     const $cookiePopin: HTMLElement = document.querySelector('#cookies button');
-    if (!getCookie('allow_cookies')) {
-        setCookie('allow_cookies', 'false');
+    if (!Cookies.get('allow_cookies')) {
+        Cookies.set('allow_cookies', 'false');
     }
-    if (getCookie('allow_cookies') === 'false') {
+    if (Cookies.get('allow_cookies') === 'false') {
         $cookiePopin.parentNode.style.opacity = 1;
     } else {
         $cookiePopin.parentNode.style.opacity = 0;
@@ -185,8 +165,8 @@ export const handleCookies = () => {
     }
     $cookiePopin.addEventListener('click', () => {
 
-        if (getCookie('allow_cookies') === 'false') {
-            setCookie('allow_cookies', 'true');
+        if (Cookies.get('allow_cookies') === 'false') {
+            Cookies.set('allow_cookies', 'true');
             $cookiePopin.parentNode.style.opacity = 0;
             setTimeout(() => {
                 $cookiePopin.parentNode.style.display = 'none';

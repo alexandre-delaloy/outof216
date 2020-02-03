@@ -21,4 +21,11 @@ export default class ChartController {
             );
         }
     }
+    public lpsUpdateView() {
+        if (!this.isTest) {
+            return this.view.lpsUpdate(
+                this.model.getUser(),
+            );
+        }
+    }
 }

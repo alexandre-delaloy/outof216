@@ -59,8 +59,11 @@ export default class TypewriterController {
     public handleKeys() {
         let isStarted: boolean = false;
         let i: number = 0;
+        const KEYSTROKES: number[] = [];
+        let keystroke: number = 0;
         // chC.updateView();
         let isFirstLetter: boolean = false;
+
         return window.addEventListener('keydown', e => {
             if (
                 /[a-z]/g.test(e.key) ||
@@ -78,12 +81,36 @@ export default class TypewriterController {
                         this.isWordSkipped = false;
                         const USER = this.userM.getUser();
                         if (!isStarted) {
-                            this.setTimer();
+                            let inc: number = 1;
+                            let index: number = 0;
+                            const calculateKeyStroke = setInterval(() => {
+                                inc++;
+                                let total: number = 0;
+                                KEYSTROKES.forEach(key => {
+                                    total += key;
+                                });
+                                const AVERAGE = Math.round((total / KEYSTROKES.length + Number.EPSILON) * 100) / 100
+
+                                ;
+                                KEYSTROKES.push(keystroke);
+                                USER.LPS.average = AVERAGE;
+                                if (inc % 10 === 0) {
+                                    USER.LPS.all.splice(index, 1, AVERAGE);
+                                    index++;
+                                    USER.LPS.all.push(AVERAGE);
+                                }
+                                chartsC.lpsUpdateView();
+                                keystroke = 0;
+                                // tslint:disable-next-line: no-console
+                                console.log(USER.LPS);
+                            }, 1000);
+                            this.setTimer(calculateKeyStroke);
                             isStarted = true;
                         }
                         if (e.key === this.model.getWords()[0][i]) {
                             this.stylizeLetter('right', i);
                             i++;
+                            keystroke++;
                             if (i === this.model.getWords()[0].length) {
                                 this.isWordFinished = true;
                             }
@@ -177,7 +204,7 @@ export default class TypewriterController {
             ).destroyView();
         });
     }
-    private setTimer() {
+    private setTimer(calculateKeyStroke: any) {
         const timer = setInterval(() => {
             this.seconds--;
             this.clockM.setSeconds(this.seconds);
@@ -187,6 +214,7 @@ export default class TypewriterController {
             }
             if (this.seconds <= 0) {
                 clearInterval(timer);
+                clearInterval(calculateKeyStroke);
                 this.userM.setIsPopin(true);
                 new UserController(
                     this.userM,
