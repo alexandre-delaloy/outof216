@@ -68,7 +68,7 @@ export default class PodiumView {
     private toggle(users: IUser[]) {
         let step = 0;
         document.querySelector('#app').addEventListener('click', () => {
-            step = step >= 2 ? 0 : step + 1
+            step = step >= 2 ? 0 : step + 1;
             const DATASET = this.chart.data.datasets[0];
             switch (step) {
                 case 0:

@@ -131,7 +131,7 @@ html
                             background: $green
                             animation: pulse infinite 2s ease 0.5s
             #timerBox
-                margin-top: 50px
+                margin-top: 40px
                 display: flex
                 align-items: center
                 strong 
@@ -157,8 +157,8 @@ html
                 color: #fff
                 border: 2px rgb(40, 40, 40) solid
                 border-radius: 5px
-                padding: 20px
-                margin: 20px auto
+                padding: 18px
+                margin: 14px auto
                 font-size: 25px
                 overflow: hidden
                 position: relative
@@ -265,21 +265,23 @@ html
                 overflow: hidden
                 &:hover
                     #report
-                        opacity: 1
+                        bottom: 0
                 #report
                     background: rgb(25, 25, 25)
                     color: #999
                     border: 4px rgb(40, 40, 40) solid
                     width: calc(100vw - 48px)
+                    height: 60px
                     padding: 0px 20px
                     font-size: 16px
                     position: fixed
-                    bottom: 0
+                    bottom: -64px
                     left: 0
-                    opacity: 0
-                    transition: opacity 0.2s ease
+                    opacity: 1
+                    transition: bottom 0.2s ease
                     p 
                         text-align: left
+                        margin: 10px 
                         a
                             color: $green
                             &:hover
