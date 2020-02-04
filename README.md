@@ -19,9 +19,9 @@
 
 # Out Of 216
 
-> another keyboard typing speedtest
+> Out Of 216 is a keyboard writing speed application designed to train and improve your typing of words on the keyboard.
 
-=> [outof216.web.app](https://outof216.web.app)
+[o u t o f 2 1 6 . w e b . a p p](https://outof216.web.app)
 
 
 ## License
