@@ -1,5 +1,6 @@
 import Chart from 'chart.js';
 import { IUser } from '../types';
+import { getParsedUsers } from '../utils';
 
 declare global {
     // tslint:disable-next-line: interface-name
@@ -52,40 +53,62 @@ export default class PodiumView {
             },
         });
 
-        for (let i = 0; i < 10; i++) {
-            this.chart.data.labels[i] = `#${i + 1} - ${users[i].name}`;
-            this.chart.data.datasets[0].data[i] = 60;
-        }
+        this.setPseudos(users);
         this.chart.canvas.parentNode.style.width = '300px';
         this.chart.canvas.parentNode.style.height = '300px';
-        // this.toggle(users);
+        this.toggle(users);
     }
     private update(users: IUser[]) {
+
         for (let i = 0; i < 10; i++) {
             this.chart.data.datasets[0].data[i] = users[i].WPM;
         }
         this.chart.update();
     }
     private toggle(users: IUser[]) {
-        let toggle = true;
+        let step = 0;
         document.querySelector('#app').addEventListener('click', () => {
-            toggle = !toggle;
-
-            for (let i = 0; i < 10; i++) {
-                const DATASET = this.chart.data.datasets[0];
-                if (toggle) {
-                    DATASET.backgroundColor = '#20c7ab50',
-                    DATASET.borderColor = '#20c7ab';
+            if (step >= 2) {
+                step = 0;
+            } else {
+                step++;
+            } 
+            // tslint:disable-next-line: no-console
+            console.log(step);
+            const DATASET = this.chart.data.datasets[0];
+            switch (step) {
+                case 0:
+                    users = getParsedUsers(users, 'wpm');
                     DATASET.label = 'WPM';
-                    DATASET.data[i] = users[i].WPM;
-                } else {
-                    DATASET.backgroundColor = '#a883ff50';
-                    DATASET.borderColor = '#a883ff';
+                    for (let i = 0; i < 10; i++) {
+                        DATASET.data[i] = users[i].WPM;
+                    }
+                    break;
+                case 1:
+                    users = getParsedUsers(users, 'acc');
                     DATASET.label = 'ACC';
-                    DATASET.data[i] = Math.floor(users[i].words.ratio * 100);
-                }
+                    for (let i = 0; i < 10; i++) {
+                        DATASET.data[i] = Math.floor(users[i].words.ratio * 100);
+                    }
+                    break;
+                case 2:
+                    users = getParsedUsers(users, 'lps');
+                    DATASET.label = 'LPS';
+                    for (let i = 0; i < 10; i++) {
+                        DATASET.data[i] = users[i].LPS.average;
+                    }
+                    break;
+
+                default:
+                    break;
             }
+            this.setPseudos(users);
             this.chart.update();
         });
+    }
+    private setPseudos(users: IUser[]) {
+        for (let i = 0; i < 10; i++) {
+            this.chart.data.labels[i] = `#${i + 1} - ${users[i].name}`;
+        }
     }
 }
