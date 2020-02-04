@@ -61,9 +61,6 @@ export const getParsedUsers = (USERS: IUser[], type: string) => {
     }
     switch (type) {
         case 'wpm':
-            // tslint:disable-next-line: no-console
-            // tslint:disable-next-line: no-console
-            console.log('sorted by WPM');
             PARSED_USERS.sort((a, b) => {
                 if (a.WPM < b.WPM) {
                     return 1;
@@ -75,8 +72,6 @@ export const getParsedUsers = (USERS: IUser[], type: string) => {
             });
             break;
         case 'lps':
-            // tslint:disable-next-line: no-console
-            console.log('sorted by LPS');
             PARSED_USERS.sort((a, b) => {
                 if (a.LPS.average < b.LPS.average) {
                     return 1;
@@ -88,8 +83,6 @@ export const getParsedUsers = (USERS: IUser[], type: string) => {
             });
             break;
         case 'acc':
-            // tslint:disable-next-line: no-console
-            console.log('sorted by ACC');
             PARSED_USERS.sort((a, b) => {
                 if (a.words.ratio < b.words.ratio) {
                     return 1;
@@ -104,17 +97,13 @@ export const getParsedUsers = (USERS: IUser[], type: string) => {
         default:
             break;
     }
-    // tslint:disable-next-line: no-console
-    console.log(PARSED_USERS);
     return PARSED_USERS;
 };
 export const getUsers = (db: any) => {
     const ref = db.ref('users');
     ref.on('value', (snapshot: any) => {
         const USERS = snapshot.val();
-
-        const PARSED_USERS = getParsedUsers(USERS, 'lps');
-
+        const PARSED_USERS = getParsedUsers(USERS, 'wpm');
         chartM.setRecordOfWpm(PARSED_USERS[0].WPM);
 
         const podiumC = new PodiumController(

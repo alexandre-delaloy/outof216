@@ -68,13 +68,7 @@ export default class PodiumView {
     private toggle(users: IUser[]) {
         let step = 0;
         document.querySelector('#app').addEventListener('click', () => {
-            if (step >= 2) {
-                step = 0;
-            } else {
-                step++;
-            } 
-            // tslint:disable-next-line: no-console
-            console.log(step);
+            step = step >= 2 ? 0 : step + 1
             const DATASET = this.chart.data.datasets[0];
             switch (step) {
                 case 0:
@@ -85,21 +79,18 @@ export default class PodiumView {
                     }
                     break;
                 case 1:
-                    users = getParsedUsers(users, 'acc');
-                    DATASET.label = 'ACC';
-                    for (let i = 0; i < 10; i++) {
-                        DATASET.data[i] = Math.floor(users[i].words.ratio * 100);
-                    }
-                    break;
-                case 2:
                     users = getParsedUsers(users, 'lps');
                     DATASET.label = 'LPS';
                     for (let i = 0; i < 10; i++) {
                         DATASET.data[i] = users[i].LPS.average;
                     }
                     break;
-
-                default:
+                case 2:
+                    users = getParsedUsers(users, 'acc');
+                    DATASET.label = 'ACC';
+                    for (let i = 0; i < 10; i++) {
+                        DATASET.data[i] = Math.floor(users[i].words.ratio * 100);
+                    }
                     break;
             }
             this.setPseudos(users);
