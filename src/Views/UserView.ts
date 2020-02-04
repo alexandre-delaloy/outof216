@@ -10,7 +10,8 @@ export default class UserView {
     private setMessage(user: IUser) {
         const MESSAGES: Array<[number, string]> = [
             [ 0, 'Pity..' ],
-            [ 20, 'Not bad.' ],
+            [ 20, 'Really..?' ],
+            [ 30, 'Not bad.' ],
             [ 40, 'Great !'],
             [ 50, 'Unbelievable !!'],
             [ 60, 'Godlike !!!' ],
@@ -35,14 +36,18 @@ export default class UserView {
                     <h3>${this.setMessage(user)}</h3>
                     <ul>
                         <li>
-                            WPM:
-                            <span>${user.WPM}</span>
+                            <strong>${user.WPM}</strong>
+                            <span>Words Per Minute</span>
                         </li>
                         <li>
-                            <i style="color:#23b923">${user.words.success}</i>
-                            &nbsp;/&nbsp;
-                            <i style="color:#b92323">${user.words.fail}</i>
-                            ( ${Math.floor(user.words.ratio * 100)}% )
+                            <strong>${user.LPS.average}</strong>
+                            <span>Letters Per Second</span>
+                        </li>
+                        <li>
+                            <strong>${Math.floor(user.words.ratio * 100)}%</strong>
+                            <span>of Accuracy  (<i style="color:#23b923">${user.words.success}</i>
+                            /
+                            <i style="color:#b92323">${user.words.fail}</i>)
                         </li>
                     </ul>
                     <form>
