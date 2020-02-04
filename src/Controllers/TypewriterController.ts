@@ -7,6 +7,7 @@ import ClockView from '../Views/ClockView';
 import ClockController from '../Controllers/ClockController';
 
 import { FAKE_USER, chartsC } from '../utils';
+import { IUser } from '../types';
 
 const qs = (selector: any): any => document.querySelector(selector);
 
@@ -57,11 +58,10 @@ export default class TypewriterController {
         );
     }
     public handleKeys() {
-        let isStarted: boolean = false;
         let i: number = 0;
         const KEYSTROKES: number[] = [];
         let keystroke: number = 0;
-        // chC.updateView();
+        let isStarted: boolean = false;
         let isFirstLetter: boolean = false;
 
         return window.addEventListener('keydown', e => {
@@ -81,10 +81,10 @@ export default class TypewriterController {
                         this.isWordSkipped = false;
                         const USER = this.userM.getUser();
                         if (!isStarted) {
-                            let inc: number = 1;
-                            let index: number = 0;
+                            let j: number = 1;
+                            let k: number = 0;
                             const calculateKeyStroke = setInterval(() => {
-                                inc++;
+                                j++;
                                 let total: number = 0;
                                 KEYSTROKES.forEach(key => {
                                     total += key;
@@ -94,15 +94,12 @@ export default class TypewriterController {
                                 ;
                                 KEYSTROKES.push(keystroke);
                                 USER.LPS.average = AVERAGE;
-                                if (inc % 10 === 0) {
-                                    USER.LPS.all.splice(index, 1, AVERAGE);
-                                    index++;
-                                    USER.LPS.all.push(AVERAGE);
+                                if (j % 10 === 0) {
+                                    USER.LPS.all[k] = AVERAGE;
+                                    k++;
                                 }
                                 chartsC.lpsUpdateView();
                                 keystroke = 0;
-                                // tslint:disable-next-line: no-console
-                                console.log(USER.LPS);
                             }, 1000);
                             this.setTimer(calculateKeyStroke);
                             isStarted = true;
@@ -158,7 +155,7 @@ export default class TypewriterController {
     }
     /**
      * @param type - the type of letter output (right | wrong | correct)
-     * @param i : the index of the letter ( 0, 1, 2, n)
+     * @param i : the k of the letter ( 0, 1, 2, n)
      *
      * @returns a stylization of the letter depending to the letter output
      */
@@ -233,5 +230,21 @@ export default class TypewriterController {
             this.clockM.setSeconds(this.seconds);
             this.clockC.updateView();
         }
+    }
+    private calculateLps(j: number, k: number, KEYSTROKES: number[], keystroke: number, USER: IUser) {
+        j++;
+        let total: number = 0;
+        KEYSTROKES.forEach(key => {
+            total += key;
+        });
+        const AVERAGE = Math.round((total / KEYSTROKES.length + Number.EPSILON) * 100) / 100;
+        KEYSTROKES.push(keystroke);
+        USER.LPS.average = AVERAGE;
+        if (j % 10 === 0) {
+            USER.LPS.all[k] = AVERAGE;
+            k++;
+        }
+        chartsC.lpsUpdateView();
+        keystroke = 0;
     }
 }
