@@ -81,20 +81,15 @@ export default class ChartsView {
                    display: false,
                 },
                 responsive: true,
-                // scales: {
-                //     xAxes: [{
-                //         stacked: true,
-                //         gridLines: {
-                //             color: '#222',
-                //         },
-                //     }],
-                //     yAxes: [{
-                //         stacked: true,
-                //         gridLines: {
-                //             color: '#222',
-                //         },
-                //     }],
-                // },
+                scales: {
+                    yAxes:  [{
+                        display: true,
+                        ticks: {
+                            beginAtZero: true,
+                            suggestedMax: 10,
+                        },
+                    }],
+                },
             },
         };
         this.wpmChart = new Chart(ctxs.wpm, {
@@ -144,7 +139,7 @@ export default class ChartsView {
                 ],
                 datasets: [{
                     data: [
-                       0, 0, 0, 0, 0, 0
+                       0, 0, 0, 0, 0, 0,
                     ],
                     backgroundColor: '#20c7ab50',
                     borderColor: '#20c7ab',
