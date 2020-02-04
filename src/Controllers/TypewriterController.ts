@@ -127,7 +127,8 @@ export default class TypewriterController {
                                     this.isWordSkipped = true;
                                     chartsC.updateView();
                                 }
-                                USER.words.ratio = USER.words.success / USER.words.count;
+                                // tslint:disable-next-line: max-line-length
+                                USER.words.ratio = Math.round((USER.words.success / USER.words.count + Number.EPSILON) * 100) / 100;
                                 this.isWordFinished = false;
                                 this.hasToBeCorrected = false;
                                 i = 0;
