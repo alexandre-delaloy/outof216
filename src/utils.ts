@@ -52,28 +52,68 @@ export const loadFirebaseData = () => {
     });
 };
 
+export const getParsedUsers = (USERS: IUser[], type: string) => {
+    const PARSED_USERS: IUser[] = [];
+    for (const key in USERS) {
+        if (USERS.hasOwnProperty(key)) {
+            PARSED_USERS.push(USERS[key]);
+        }
+    }
+    switch (type) {
+        case 'wpm':
+            // tslint:disable-next-line: no-console
+            // tslint:disable-next-line: no-console
+            console.log('sorted by WPM');
+            PARSED_USERS.sort((a, b) => {
+                if (a.WPM < b.WPM) {
+                    return 1;
+                }
+                if (a.WPM > b.WPM) {
+                    return -1;
+                }
+                return 0;
+            });
+            break;
+        case 'lps':
+            // tslint:disable-next-line: no-console
+            console.log('sorted by LPS');
+            PARSED_USERS.sort((a, b) => {
+                if (a.LPS.average < b.LPS.average) {
+                    return 1;
+                }
+                if (a.LPS.average > b.LPS.average) {
+                    return -1;
+                }
+                return 0;
+            });
+            break;
+        case 'acc':
+            // tslint:disable-next-line: no-console
+            console.log('sorted by ACC');
+            PARSED_USERS.sort((a, b) => {
+                if (a.words.ratio < b.words.ratio) {
+                    return 1;
+                }
+                if (a.words.ratio > b.words.ratio) {
+                    return -1;
+                }
+                return 0;
+            });
+            break;
+
+        default:
+            break;
+    }
+    // tslint:disable-next-line: no-console
+    console.log(PARSED_USERS);
+    return PARSED_USERS;
+};
 export const getUsers = (db: any) => {
     const ref = db.ref('users');
-    const PARSED_USERS: IUser[] = [];
-
     ref.on('value', (snapshot: any) => {
         const USERS = snapshot.val();
 
-        for (const key in USERS) {
-            if (USERS.hasOwnProperty(key)) {
-                PARSED_USERS.push(USERS[key]);
-            }
-        }
-
-        PARSED_USERS.sort((a, b) => {
-            if (a.WPM < b.WPM) {
-                return 1;
-            }
-            if (a.WPM > b.WPM) {
-                return -1;
-            }
-            return 0;
-        });
+        const PARSED_USERS = getParsedUsers(USERS, 'lps');
 
         chartM.setRecordOfWpm(PARSED_USERS[0].WPM);
 
