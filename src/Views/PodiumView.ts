@@ -66,32 +66,26 @@ export default class PodiumView {
         this.chart.update();
     }
     private toggle(users: IUser[]) {
-        let step = 0;
-        document.querySelector('#app').addEventListener('click', () => {
-            step = step >= 2 ? 0 : step + 1;
-            const DATASET = this.chart.data.datasets[0];
-            switch (step) {
-                case 0:
-                    users = getParsedUsers(users, 'wpm');
-                    DATASET.label = 'WPM';
-                    for (let i = 0; i < 10; i++) {
-                        DATASET.data[i] = users[i].WPM;
-                    }
-                    break;
-                case 1:
-                    users = getParsedUsers(users, 'lps');
-                    DATASET.label = 'LPS';
-                    for (let i = 0; i < 10; i++) {
-                        DATASET.data[i] = users[i].LPS.average;
-                    }
-                    break;
-                case 2:
-                    users = getParsedUsers(users, 'acc');
-                    DATASET.label = 'ACC';
-                    for (let i = 0; i < 10; i++) {
-                        DATASET.data[i] = Math.floor(users[i].words.ratio * 100);
-                    }
-                    break;
+        const DATASET = this.chart.data.datasets[0];
+        let isToggled = false;
+        document.querySelector('#podiumChart').addEventListener('click', () => {
+            isToggled = !isToggled;
+            if (isToggled) {
+                users = getParsedUsers(users, 'lps');
+                DATASET.label = 'LPS';
+                DATASET.backgroundColor = '#83ffea50',
+                DATASET.borderColor = '#83ffea';
+                for (let i = 0; i < 10; i++) {
+                    DATASET.data[i] = users[i].LPS.average;
+                }
+            } else {
+                users = getParsedUsers(users, 'wpm');
+                DATASET.label = 'WPM';
+                DATASET.backgroundColor = '#20c7ab50',
+                DATASET.borderColor = '#20c7ab';
+                for (let i = 0; i < 10; i++) {
+                    DATASET.data[i] = users[i].WPM;
+                }
             }
             this.setPseudos(users);
             this.chart.update();
